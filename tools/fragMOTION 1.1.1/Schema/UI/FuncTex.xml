@@ -1,0 +1,22 @@
+<schema name="Texturing Functions" guid="{655FA455-A304-41b4-B798-06AB479E54AC}" version="1.0.6" >
+	<Menu Name="MainMenu" Caption="" IconFile="" _guid="" _version="1.0.0" Expand="True" InsertAfter="Viewer" >
+		<Menu Name="Texture" Caption="" IconFile="" _guid="{B5D74342-1ACC-440E-B9F5-B7DDE89AFBF7}" _version="1.0.0" Expand="False" InsertAfter="Bone" >
+			<MenuItem Name="UVMapper" Caption="UV Mapper" Script="./Schema/Scripts/SystemScripts/UVMapper" _guid="{A98B3496-5396-4890-A49A-2B2517A247D8}" _version="1.0.5" InsertAfter="" />
+			<MenuItem Name="OldUVMapper" Caption="Old UV Mapper" Script="./Schema/Scripts/SystemScripts/MapUVCoords" _guid="{34B00D07-6B2C-4B90-997A-0DFF38806147}" _version="1.1.0" InsertAfter="UVMapper" />
+			<MenuItem Name="UnwrapUVCoords" Caption="Unwrap UV Coords" Script="./Schema/Scripts/SystemScripts/UnwrapUVCoords" _guid="{5000920C-BEAD-404F-BBA0-546B90D49A8B}" _version="1.0.0" InsertAfter="OldUVMapper" />
+			<Separator Name="Separator" _guid="{DCEC12C5-ADF2-42DB-A8F9-7CBDA0D78274}" _version="1.0.0" InsertAfter="UnwrapUVCoords" />
+			<MenuItem Name="AssignMaterial" Caption="Assign Material To Selection" Script="./Schema/Scripts/SystemScripts/AssignMaterial" _guid="{88CE9A7B-4262-4ED9-A04B-B6ACD0D53568}" _version="1.0.5" InsertAfter="Separator" />
+			<MenuItem Name="UnassignMaterial" Caption="Unassign Material From Selection" Script="./Schema/Scripts/SystemScripts/UnassignMaterial" _guid="{86F89723-72E6-4C0C-BC47-F150EBE1848F}" _version="1.0.5" InsertAfter="AssignMaterial" />
+		</Menu>
+	</Menu>
+	<ToolWrapperFolder Name="ToolWrappers" _guid="" _version="1.0.0" Expand="True" InsertAfter="Tools" >
+		<ToolWrapper Name="3D Paint" Layer="0" Brush="0" BrushShape="1" BrushSize="1" Opacity="1" Color="16777215" AntiAlias="0" Version="1.0" Category="" Desc="" Flags="" Key="Q" Modifiers="" _guid="" _version="1.0.5" InsertAfter="ContextMenu" />
+	</ToolWrapperFolder>
+	<ToolDisplayFolder Name="ToolDisplayLists" _guid="" _version="1.0.3" Expand="True" InsertAfter="ToolWrappers" >
+		<ToolDisplayList Name="Default" Key="(none)" Modifiers="" _guid="" _version="1.0.3" Expand="True" InsertAfter="" >
+			<ToolCategory Name="Texture" _guid="{77D100DC-2300-4492-BFFB-F995B7C65305}" _version="1.0.1" Expand="True" >
+				<ToolShortcut Name="ToolShortcut" Target="./Schema/ToolWrappers/3D Paint" _guid="{3C9A496D-61DD-4D8A-8915-F19F79433C7F}" _version="1.0.1" InsertAfter="" />
+			</ToolCategory>
+		</ToolDisplayList>
+	</ToolDisplayFolder>
+</schema>

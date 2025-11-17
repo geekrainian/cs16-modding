@@ -1,0 +1,53 @@
+<schema name="Blitz3D" guid="{8D5E583F-89F2-4B22-A224-45F2E61E2005}" version="1.0.0" >
+	<ClassFolder Name="Classes" Expand="True" InsertAfter="Extensions" >
+		<Class Name="Texture" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="SmoothingGroup" >
+			<Property Name="Flags" Desc="" DataType="datatype:Flags" EnumValues="./Schema/EnumLists/Blitz3d/TextureFlags" DefaultValue="Color" PropFlags="" MinValue="" MaxValue="" InsertAfter="RefreshTextureData" />
+			<Property Name="Blend" Desc="" DataType="datatype:DropDownEnums" EnumValues="./Schema/EnumLists/Blitz3d/TextureBlend" DefaultValue="Multiply" PropFlags="" MinValue="" MaxValue="" InsertAfter="Flags" />
+			<Property Name="X Pos" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" InsertAfter="Blend" />
+			<Property Name="Y Pos" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" InsertAfter="X Pos" />
+			<Property Name="X Scale" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="1" PropFlags="" MinValue="" MaxValue="" InsertAfter="Y Pos" />
+			<Property Name="Y Scale" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="1" PropFlags="" MinValue="" MaxValue="" InsertAfter="X Scale" />
+			<Property Name="Rotation" Desc="" DataType="datatype:Angle" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" InsertAfter="Y Scale" />
+		</Class>
+		<Class Name="Material" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Texture" >
+			<Property Name="Blend" Desc="" DataType="datatype:DropDownEnums" EnumValues="./Schema/EnumLists/Blitz3d/BrushBlend" DefaultValue="Alpha" PropFlags="" MinValue="" MaxValue="" InsertAfter="Transparency" />
+			<Property Name="FX" Desc="" DataType="datatype:Flags" EnumValues="./Schema/EnumLists/Blitz3d/BrushFX" DefaultValue="Nothing" PropFlags="" MinValue="" MaxValue="" InsertAfter="Blend" />
+		</Class>
+	</ClassFolder>
+	<EnumListFolder Name="EnumLists" Expand="True" InsertAfter="DataTypes" >
+		<EnumListFolder Name="Blitz3d" Expand="True" InsertAfter="TextureLayerValues" >
+			<EnumList Name="TextureFlags" Desc="" Expand="True" InsertAfter="" >
+				<EnumVal Name="Color" Desc="" Value="1" InsertAfter="" />
+				<EnumVal Name="Alpha" Desc="" Value="2" InsertAfter="Color" />
+				<EnumVal Name="Masked" Desc="" Value="4" InsertAfter="Alpha" />
+				<EnumVal Name="Mipmapped" Desc="" Value="8" InsertAfter="Masked" />
+				<EnumVal Name="Clamp U" Desc="" Value="16" InsertAfter="Mipmapped" />
+				<EnumVal Name="Clamp V" Desc="" Value="32" InsertAfter="Clamp U" />
+				<EnumVal Name="Spherical Environment Map" Desc="" Value="64" InsertAfter="Clamp V" />
+				<EnumVal Name="Cubic Environment Map" Desc="" Value="128" InsertAfter="Spherical Environment Map" />
+				<EnumVal Name="Store Texture In VRAM" Desc="" Value="256" InsertAfter="Cubic Environment Map" />
+				<EnumVal Name="Force High Color Textures" Desc="" Value="512" InsertAfter="Store Texture In VRAM" />
+			</EnumList>
+			<EnumList Name="TextureBlend" Desc="" Expand="True" InsertAfter="TextureFlags" >
+				<EnumVal Name="Do Not Blend" Desc="" Value="0" InsertAfter="" />
+				<EnumVal Name="No Blend or Alpha" Desc="" Value="1" InsertAfter="Do Not Blend" />
+				<EnumVal Name="Multiply" Desc="" Value="2" InsertAfter="No Blend or Alpha" />
+				<EnumVal Name="Add" Desc="" Value="3" InsertAfter="Multiply" />
+				<EnumVal Name="Dot3" Desc="" Value="4" InsertAfter="Add" />
+				<EnumVal Name="Multiply 2" Desc="" Value="5" InsertAfter="Dot3" />
+			</EnumList>
+			<EnumList Name="BrushBlend" Desc="" Expand="True" InsertAfter="TextureBlend" >
+				<EnumVal Name="Alpha" Desc="" Value="0" InsertAfter="" />
+				<EnumVal Name="Multiply" Desc="" Value="1" InsertAfter="Alpha" />
+				<EnumVal Name="Add" Desc="" Value="2" InsertAfter="Multiply" />
+			</EnumList>
+			<EnumList Name="BrushFX" Desc="" Expand="True" InsertAfter="BrushBlend" >
+				<EnumVal Name="Full Bright" Desc="" Value="1" InsertAfter="Nothing" />
+				<EnumVal Name="Use Vertex Colors" Desc="" Value="2" InsertAfter="Full Bright" />
+				<EnumVal Name="Flat Shaded" Desc="" Value="4" InsertAfter="Use Vertex Colors" />
+				<EnumVal Name="Disable Fog" Desc="" Value="8" InsertAfter="Flat Shaded" />
+				<EnumVal Name="Disable Backface Culling" Desc="" Value="16" InsertAfter="Disable Fog" />
+			</EnumList>
+		</EnumListFolder>
+	</EnumListFolder>
+</schema>

@@ -1,0 +1,1 @@
+ripent.exe -import CTF_InfernalVillage2.bsp

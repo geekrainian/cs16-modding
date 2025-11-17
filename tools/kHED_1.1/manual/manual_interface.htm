@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="ltr">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+<title>kHED :: Справка :: Интерфейс</title>
+<style type="text/css">
+<!--
+/* General page style. The scroll bar colours only visible in IE5.5+ */
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+/* General font families for common tags */
+font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+a:link,a:active,a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+hr	{ height: 0px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+
+td.rowpic {
+		background-color: #FFFFFF;
+		background-image: url(forum/templates/subSilver/images/cellpic2.jpg);
+		background-repeat: repeat-y;
+}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url(forum/templates/subSilver/images/cellpic3.gif);
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			background-image: url(forum/templates/subSilver/images/cellpic1.gif);
+			background-color:#D1D7DC; border: #FFFFFF; border-style: solid; height: 28px;
+}
+
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px;
+}
+td.row3Right,td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid;
+}
+
+th.thHead,td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+	font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none; line-height : 120%; color : #000000;
+}
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #000000; }
+a.gen,a.genmed,a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #000000 }
+a.mainmenu		{ text-decoration: none; color : #006699;  }
+a.mainmenu:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: 12px; color : #006699; }
+a.forumlink 	{ text-decoration: none; color : #006699; }
+a.forumlink:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: 11px; color : #000000;}
+a.nav			{ text-decoration: none; color : #006699; }
+a.nav:hover		{ text-decoration: underline; }
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle,h1,h2	{ font-weight: bold; font-size: 11px; color : #000000; }
+a.topictitle:link   { text-decoration: none; color : #006699; }
+a.topictitle:visited { text-decoration: none; color : #5493B4; }
+a.topictitle:hover	{ text-decoration: underline; color : #DD6900; }
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : 11px; color : #000000;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : 10px; color : #000000; }
+
+/* The content of the posts (body of text) */
+.postbody { font-size : 12px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : #006699 }
+a.postlink:visited { text-decoration: none; color : #5493B4; }
+a.postlink:hover { text-decoration: underline; color : #DD6900}
+
+/* Copyright and bottom info */
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: -1px;}
+a.copyright		{ color: #444444; text-decoration: none;}
+a.copyright:hover { color: #000000; text-decoration: underline;}
+
+-->
+</style>
+
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5493B4">
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
+	<tr>
+		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+</td>
+</tr>
+</table><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+<b style="font-size:16pt">Интерфейс</b><br><br>
+<span class="genmed">
+&nbsp; kHED имеет классический интерфейс 3D-редактора. Он состоит из четырех вьюпортов (областей отображения) и панелей инструментов. Каждая панель инструментов может быть перемещена или прикреплена к любому краю главного окна посредством ее перетягивания курсором мыши. Вы можете включать и отключать отображение панелей через меню <b>View</b>.
+<br><br>
+&nbsp; Ниже показано главное окно приложения:
+<br>
+<br>
+<center><img src="../manual_img/main.jpg"></center>
+<br><br><br><br>
+<b style="font-size:12pt">Вьюпорты 1, 2, 3, 4</b><br><br>
+&nbsp; Каждый вьюпорт представляет собой изображение модели с определенными настройками. В первую очередь это тип проекции: ортогональная и перспективная. Ортогональная аналогична той, что используется в техническом черчении, а перспективная - человеческому зрению.
+<br><br>&nbsp; По умолчанию вьюпорты 1, 2, 3 имеют ортогональную проекцию и отображают модель соответственно с переди, с лева и с верху. Вьюпорт 4 отображает модель в перспективной проекции. Чтобы узнать какая проекция выбрана, наведите указатель мыши на вьюпорт: текущая проекция будет показана в строке состояния.
+<br><br>&nbsp; Настроить параметры вьюпорта можно кликнув по нему правой кнопкой мыши.
+<br><br><img src="../manual_img/viewport_menu.gif">
+<br><br>&nbsp; Первые 4 строки - типы отображения модели:
+<br><br><img src="../manual_img/viewmode.jpg">
+<br><br>&nbsp; <b>Wireframe Overlay</b> - включает рисование сетки поверх модели. В режиме <b>Wireframe</b> эта настройка не имеет никакого эффекта.
+<br><br>&nbsp; <b>Draw Backfaces</b> - включает рисование обратной стороны треугольников.
+<br><br>&nbsp; <b>Front</b>, <b>Back</b>, <b>Left</b>, <b>Right</b>, <b>Top</b>, <b>Bottom</b> - направление ортогональной проекции.
+<br><br>&nbsp; <b>3D Rotate</b> - Вращение вокруг точки.
+<br><br>&nbsp; <b>3D Look</b> - Обзор "от первого лица". В этом режиме можно перемещаться в пространстве клавишами стрелок.
+<br><br>&nbsp; <b>Options...</b> - Открыть диалоговое окно выбора проекции.
+<br><br>&nbsp; <b>Reset View</b> - Установить направление обзора в начало координат.
+<br><br>&nbsp; <b>Maximize</b> - Развернуть вьюпорт на всю рабочую область.
+<br><br>&nbsp; <b>Background Image</b> - Выбрать фоновый рисунок для вьюпорта. Это полезно при создании модели по ее фото или эскизу. Чтобы убрать фоновый рисунок нужно выбрать пункт <b>Remove Background Image</b> (он доступен только при установленном фоновом рисунке). Если хотябы в одном из вьюпортов выбран фоновый рисунок, в меню <b>View</b> доступен пункт <b>Edit Background Image</b>, который позволяет перемещать, вращать и масштабировать фоновый рисунок.
+
+<br><br>&nbsp; В перспективной проекции доступны три дополнительные кнопки управления. Они позволяют переключаться между разными режимами просмотра: вращение вокруг начала координат, вращение вокруг выделения и "от первого лица" соответственно.
+<br><br>&nbsp; Масштаб просмотра можно изменять колесиком мыши либо курсором с нажатой клавишей <b>Shift</b>.
+<br><br>&nbsp; Перетягивать вид можно средней кнопкой мыши либо левой при нажатой клавише <b>Ctrl</b>.
+<br><br>&nbsp; Также есть возможность с помощью курсора мыши изменять положение разделителя между вьюпортами. Чтобы вернуть исходное положение разделителя нужно дважды кликнуть по разделителю.
+<br><br><br><br>
+<b style="font-size:12pt">Toolbar</b><br><br>
+<img src="../manual_img/toolbar.jpg"><br><br>
+&nbsp; Данная панель предлагает следующие функции (слева на право):
+<ul>
+<li><b>New</b> - Создать новый файл (также доступно через меню <b>File-&gt;New</b> или через комбинацию <b>Ctrl+N</b>)</li>
+<li><b>Open</b> - Открыть файл (<b>File-&gt;Open</b>, <b>Ctrl+O</b>)</li>
+<li><b>Save</b> - Сохранить файл (<b>File-&gt;Save</b>, <b>Ctrl+S</b>)</li>
+<li><b>Undo</b> - Отменить последнее действие (<b>Edit-&gt;Undo</b>, <b>Ctrl+Z</b>)</li>
+<li><b>Redo</b> - Повторить отмененное действие (<b>Edit-&gt;Redo</b>, <b>Ctrl+Y</b>)</li>
+<li><b>Groups</b> - Открыть/закрыть панель групп (<b>View-&gt;Groups</b>, <b>G</b>)</li>
+<li><b>Smoothing Groups</b> - Открыть/закрыть панель групп сглаживания (<b>View-&gt;Smoothing Groups</b>, <b>S</b>)</li>
+<li><b>Materials</b> - Открыть/закрыть панель материалов (<b>View-&gt;Materials</b>, <b>M</b>)</li>
+<li><b>Tools</b> - Открыть/закрыть панель инструментов (<b>View-&gt;Tools</b>)</li>
+<li><b>Snap To Grid</b> - Включить/отключить привязку к сетке (Нажмите правой кнопкой мыши для выбора шага привязки)</li>
+<li><b>Mirror Horizontal</b> - Отразить выделенные объекты по горизонтали (<b>Edit-&gt;Mirror-&gt;Horizontal</b>)</li>
+<li><b>Mirror Vertical</b> - Отразить выделенные объекты по вертикали (<b>Edit-&gt;Mirror-&gt;Vertical</b>)</li>
+<li><b>Mirror Clone Horizontal</b> - Отразить выделенные объекты по горизонтали, создав их копию (<b>Edit-&gt;Mirror-&gt;Clone Horizontal</b>)</li>
+<li><b>Mirror Clone Vertical</b> - Отразить выделенные объекты по горизонтали, создав их копию (<b>Edit-&gt;Mirror-&gt;Clone Vertical</b>)</li>
+<li><b>Flatten X</b> - Выровнять выделенные вершины по оси X (<b>Edit-&gt;Flatten-&gt;X</b>)</li>
+<li><b>Flatten Y</b> - Выровнять выделенные вершины по оси Y (<b>Edit-&gt;Flatten-&gt;Y</b>)</li>
+<li><b>Flatten Z</b> - Выровнять выделенные вершины по оси Z (<b>Edit-&gt;Flatten-&gt;Z</b>)</li>
+<li><b>New Smoothing Group</b> - Привязать выделенные треугольники к новой группе сглаживания</li>
+<li><b>Remove Smoothing</b> - Убрать сглаживание на выбранных треугольниках</li>
+<li><b>Auto Smooth</b> - Применить инструмент Auto Smooth к выделенным треугольникам</li>
+<li><b>UV Editor</b> - Открыть редактор текстурных координат</li>
+</ul>
+
+<br><br><br><br>
+<b style="font-size:12pt">Status Bar</b><br><br>
+&nbsp; Строка состояния. Отображает текущее действие, его прогресс, текущие координаты, статус привязки к сетке и проекцию.
+
+<br><br><br><br>
+<b style="font-size:12pt">Tools Panel</b><br><br>
+&nbsp; На этой панели находятся кнопки выбора инструментов. Они включают в себя выделение объектов, модификацию геометрии объектов, создание объектов а также проециорвание текстурных координат. (см. <a href="manual_tools.htm">Инструменты</a> для подробной информации)
+
+<br><br><br><br>
+<b style="font-size:12pt">Tool Options</b><br><br>
+&nbsp; В этой области отображаются опции выбранного инструмента. (см. <a href="manual_tools.htm">Инструменты</a> для подробной информации)
+
+<br><br><br><br>
+<b style="font-size:12pt">Counter</b><br><br>
+&nbsp; Здесь отображаются количества вершин и треугольников модели. В настройках программы можно так же настроить как этот счетчик будет показывать выделенные или скрытые объекты.
+<br><br><br><br><br><br><br><br><br><br><br><br><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+</span><br>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

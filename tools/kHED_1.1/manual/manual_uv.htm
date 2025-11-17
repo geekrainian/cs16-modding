@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="ltr">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+<title>kHED :: Справка :: Редактор тестурных координат (UV Editor)</title>
+<style type="text/css">
+<!--
+/* General page style. The scroll bar colours only visible in IE5.5+ */
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+/* General font families for common tags */
+font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+a:link,a:active,a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+hr	{ height: 0px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+
+td.rowpic {
+		background-color: #FFFFFF;
+		background-image: url(forum/templates/subSilver/images/cellpic2.jpg);
+		background-repeat: repeat-y;
+}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url(forum/templates/subSilver/images/cellpic3.gif);
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			background-image: url(forum/templates/subSilver/images/cellpic1.gif);
+			background-color:#D1D7DC; border: #FFFFFF; border-style: solid; height: 28px;
+}
+
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px;
+}
+td.row3Right,td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid;
+}
+
+th.thHead,td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+	font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none; line-height : 120%; color : #000000;
+}
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #000000; }
+a.gen,a.genmed,a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #000000 }
+a.mainmenu		{ text-decoration: none; color : #006699;  }
+a.mainmenu:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: 12px; color : #006699; }
+a.forumlink 	{ text-decoration: none; color : #006699; }
+a.forumlink:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: 11px; color : #000000;}
+a.nav			{ text-decoration: none; color : #006699; }
+a.nav:hover		{ text-decoration: underline; }
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle,h1,h2	{ font-weight: bold; font-size: 11px; color : #000000; }
+a.topictitle:link   { text-decoration: none; color : #006699; }
+a.topictitle:visited { text-decoration: none; color : #5493B4; }
+a.topictitle:hover	{ text-decoration: underline; color : #DD6900; }
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : 11px; color : #000000;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : 10px; color : #000000; }
+
+/* The content of the posts (body of text) */
+.postbody { font-size : 12px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : #006699 }
+a.postlink:visited { text-decoration: none; color : #5493B4; }
+a.postlink:hover { text-decoration: underline; color : #DD6900}
+
+/* Copyright and bottom info */
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: -1px;}
+a.copyright		{ color: #444444; text-decoration: none;}
+a.copyright:hover { color: #000000; text-decoration: underline;}
+
+-->
+</style>
+
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5493B4">
+
+<a name="top"></a>
+
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center" ID="Table1">
+	<tr>
+		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0" ID="Table2">
+
+</td>
+</tr>
+</table><br><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+<b style="font-size:16pt">Редактор текстурных координат (UV Editor)</b><br><br>
+<span class="genmed">
+&nbsp; Чтобы вручную редактировать текстурные координаты, выделите нужные треугольники и нажмите <b>UV Editor</b> на <b>Toolbar</b>'e (также доступно через меню <b>View-&gt;UV Editor...</b> или через клавишу <b>T</b>). 
+<br><br><img src="../manual_img/uv.jpg"><br><br>
+<br><br>&nbsp; Окно редактора текстурных координат состоит из двух видов и панели инструментов.
+<ul>
+<li><b>Map View</b> - просмотр текстурной развертки;
+<li><b>Model View</b> - просмотр редактируемой части модели;
+</ul>
+&nbsp; Одной вершине в <b>Model View</b> может соответствовать несколько вершин (текстурных координат) в <b>Map View</b>.
+<br><br>&nbsp; В обоих видах можно выделять объекты (вершины, ребра, треугольники и элементы).
+<br><br><img src="../manual_img/uv_select.jpg">
+<br><br>&nbsp; Тип выделяемых объектов выбирается кнопками на панели либо клавишами <b>1</b>, <b>2</b>, <b>3</b> и <b>4</b>. 
+<br><br>&nbsp; Когда один или несколько объектов выделены, вокруг них появляется рамка, с помощью которой можно перемещать, вращать и масштабировать объекты.
+<br><br>&nbsp; Чтобы перемещать объекты, поместите указатель внутри рамки и переместите его, удерживая левую кнопку мыши. 
+<br><br><img src="../manual_img/uv_move.jpg"><br>
+<br><br>&nbsp; Чтобы вращать объекты, поместите указатель над одним из угловых кружков рамки и переместите его, удерживая левую кнопку мыши. 
+<br><br><img src="../manual_img/uv_rotate.jpg"><br>
+<br><br>&nbsp; Чтобы масштабировать объекты, поместите указатель над одной из точек рамки и переместите его, удерживая левую кнопку мыши. 
+<br><br><img src="../manual_img/uv_scale.jpg"><br>
+<br><br>&nbsp; Переместить отдельную вершину можно поместив над ней указатель и переместив его, удерживая нажатой левую кнопку мыши.
+<br><br><img src="../manual_img/uv_vertex.jpg"><br>
+<br><br>&nbsp; Вы также можете отразить объекты по вертикали и горизонтали с помощью кнопок на панели, либо через <b>Ctrl-I</b> и <b>Ctrl-L</b>.
+<br><br><img src="../manual_img/uv_mirror.jpg"><br>
+<br><br>&nbsp; При выделении объектов, смежные с ними объекты помечаются синим цветом:
+<br><br><img src="../manual_img/uv_shared.jpg"><br>
+<br><br>&nbsp; Чтобы объединить две вершины (на самом деле две текстурные координаты одной вершины), выделите их и нажмите <b>Weld</b> либо <b>Ctrl-W</b>. Если выбранные текстурные координаты соответствуют разным вершинам модели, функция не будет иметь никакого эффекта. Функция <b>Weld</b> полезна для создания непрерывной развертки из отдельных элементов.
+<br><br><img src="../manual_img/uv_weld.jpg"><br>
+<br><br>&nbsp; Функция <b>Unweld</b> (<b>Ctrl-U</b>) имеет обратное действие: после ее нажатия каждому треугольнику вершины будет соответствовать отдельная вершина в <b>Map View</b>. 
+<br><br>&nbsp; Функция <b>Regroup</b> позволяет изолировать выделенные объекты в отдельный элемент:
+<br><br><img src="../manual_img/uv_regroup.jpg"><br>
+<br><br>&nbsp; В выпадающем списке на панели инструментов можно выбрать материал, для которого будет происходить редактирование. Этот список активен только если перед открытием редактора текстурных координат были выделены треугольники с разными материалами.
+<br><br>&nbsp; Вы можете отменить последнее действие и повторить последнее отмененное действие с помощью кнопок <b>Undo</b> и <b>Redo</b> на панели инструментов, либо через <b>Ctrl-Z</b> и <b>Ctrl-Y</b>
+<br><br>&nbsp; Опция <b>Tile Texture</b> включает повторение текстуры в <b>Map View</b>.
+<br><br>&nbsp; Опция <b>Snap To Grid</b> включает привязку к сетке.
+<br><br>&nbsp; Опция <b>Show Wireframe</b> включает показ сетки поверх модели в окне <b>Model View</b>
+<br><br>&nbsp; С помощью кнопок <b>Copy</b> и <b>Save</b> текущая текстурная развертка копируется в буфер обмена (Copy) или сохраняется в графический файл (Save). Эта функция полезна для создания текстуры по текстурной развертке.
+<br><br><br><br><br><br><br><br><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+</span><br>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<schema name="Face Breaking Tool" guid="{2B987FAE-C00D-4574-926B-19F046F47B66}" version="1.0.2" >
+	<ClassFolder Name="Classes" _guid="" _version="1.0.0" InsertBefore="DataTypes" >
+		<Class Name="BreakFace" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="breakface.ico" _guid="{8BEEC9DE-B6EE-4e7b-B0BA-D88A5591F898}" _version="1.0.0" InsertBefore="ShapeTools" >
+			<Inherit Name="Inherit" Target="class:Tool" _guid="{6DD838F1-9C00-4309-B86C-81419D732B20}" _version="1.0.0" InsertBefore="SetStartPointImpl" />
+			<LuaLocalListener Name="SetStartPointImpl" ScriptCode="-- this function will do a hit test on the mesh and if a face is under the mouse, 
+-- it will be broken into 3 faces using the hit coordinates as the new vertex
+
+local anim = editChar:GetSelAnimation()
+if (anim:isSet()) then
+	editChar:SetSelAnimation(IAnimation(), selSingle) -- make sure we&apos;re looking at the initial pose
+	viewer:Redraw(true)
+else
+	local method = event.method
+	local mesh = editChar:GetSelMesh()
+	local skel = editChar:GetSkeleton()
+
+	local pt = vertex2d(method.x, method.y)
+	local faceHit, coords, uv = viewer:HitTestMesh(method.pane, pt, false, mesh, matrix(), skel, 0, anim)
+
+	if (not (faceHit == -1)) then
+		--print(string.format(&apos;face index: %s&apos;, faceHit))
+		
+		-- add an undo unit
+		mesh:CreateMeshUndoUnit(MESH_NOTIFY+MESH_UPDATE, &apos;Break Face&apos;)
+		
+		-- add the new vertex to the mesh
+		local v = fragVertex()
+		v.x, v.y, v.z = coords.x, coords.y, coords.z
+		local newVert = mesh:AddVertex(v)
+		
+		local tri0 = fragTriangle()
+		local tri1 = fragTriangle()
+		
+		local verts, numVerts, tris, numTris = mesh:LockMesh()
+		
+			 -- get the target face
+			local curTri = tris[faceHit]
+			
+			 -- copy the target face into the 2 new faces
+			 -- NOTE: tri0 = curTri  will not copy the contents of the triangle, it will simply reassign tri0 to reference curTri so you must use copy
+			tri0:copy(curTri)
+			tri1:copy(curTri)
+
+			-- update the index and uv coords for the 3 faces
+			curTri.index[2] = newVert
+			curTri.uv[2] = uv
+
+			tri0.index[0] = newVert
+			tri0.uv[0] = uv
+
+			tri1.index[1] = newVert
+			tri1.uv[1] = uv
+
+		mesh:UnlockMesh()
+		
+		-- add the new faces to the mesh
+		mesh:AddFace(tri0)
+		mesh:AddFace(tri1)
+		
+		mesh:CreateVertexNormals(editChar:GetModel()) -- update the vertex normals
+
+		mesh:FireChangeEvent() -- notify any listeners that the mesh has changed
+	end
+end
+
+" Source="" FilterObject="class:Tool/SetStartPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{A72D31EA-29EE-4544-9FE8-72F0E063505E}" _version="1.0.0" />
+		</Class>
+	</ClassFolder>
+	<ToolFolder Name="Tools" _guid="" _version="1.0.0" InsertBefore="Preferences" >
+		<BreakFace Name="BreakFace" Version="1.0" Category="Mesh" Desc="Breaks a face into 3 triangles where the button is clicked." Key="F6" Flags="" _guid="{2724B947-32B9-44cd-9A6B-7C12A61E1DBF}" _version="1.0.0" />
+	</ToolFolder>
+	<ToolDisplayFolder Name="ToolDisplayLists" _guid="" _version="1.0.3" InsertAfter="ToolWrappers" >
+		<ToolDisplayList Name="Default" _guid="" _version="1.0.3" InsertAfter="" >
+			<ToolCategory Name="Mesh" _guid="{30501FBD-BA96-46B2-92DA-A32581864B8F}" _version="1.0.0" >
+				<ToolShortcut Name="ToolShortcut9" Target="./Schema/Tools/BreakFace" _guid="{BB77DEDF-F4E5-435E-A7D5-E1DFBDA3F014}" _version="1.0.2" InsertAfter="ToolShortcut8" />
+			</ToolCategory>
+		</ToolDisplayList>
+	</ToolDisplayFolder>
+</schema>

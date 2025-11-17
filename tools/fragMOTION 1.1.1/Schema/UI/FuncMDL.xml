@@ -1,0 +1,10 @@
+<schema name="Half-Life MDL Functions" guid="{C21BA3B8-3D7D-4c0b-A606-672443D48E67}" version="1.0.0" >
+	<Menu Name="MainMenu" Caption="" IconFile="" _guid="" _version="1.0.0" InsertBefore="MainToolbar" >
+		<Menu Name="Tools" Caption="" IconFile="" _guid="{90F2A29F-F15D-41DC-AA9C-BE32758DA488}" _version="1.0.0" InsertBefore="View" >
+			<Menu Name="Half-Life" Caption="" IconFile="" _guid="{102A5343-776F-4225-9114-B82886775F50}" _version="1.0.0" >
+				<MenuItem Name="CompileMDL" Caption="Compile Half-Life .MDL" Script="./Schema/Scripts/SystemScripts/CompileMDL" _guid="{700FD87D-66C1-4FC5-BC1E-B9005F4699E7}" _version="1.0.0" InsertBefore="DecompileMDL" />
+				<MenuItem Name="DecompileMDL" Caption="Decompile Half-Life .MDL" Script="./Schema/Scripts/SystemScripts/DecompileMDL" _guid="{7A8B0AA8-8ABA-41F1-8DE8-9CC5F29EC29F}" _version="1.0.0" />
+			</Menu>
+		</Menu>
+	</Menu>
+</schema>

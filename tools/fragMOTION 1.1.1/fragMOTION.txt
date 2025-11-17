@@ -1,0 +1,298 @@
+=====================================================================
+
+	fragMOTION
+	Copyright © 2004-2010 Fragmosoft
+	http://www.fragmosoft.com
+	Comments/Suggestions/Bug reports: support@fragmosoft.com
+
+=====================================================================
+
+CHANGE LOG:
+
+version 1.1.1
+-fixed undo bugs when using animation links
+-fixed bug where grab and look at animation links didn't always update
+-fixed bug in mirror animation link when skeletons used rotational offsets
+-improved .X importer/exporter to retain the original mesh hierarchy
+-improved DarkBasic .DBO importer/exporter to retain the original mesh hierarchy
+
+version 1.1.0
+-added animation links which provide support for mirroring, look at, etc... during animation
+-improved texture directory searching
+-added tool tips to keyframe editor functions
+-fixed bug in .X importer
+-fixed bug in DarkBasic .DBO importer
+-added another syntax option to the split animations dialog
+
+version 1.0.3a
+-reverted changes made to Blitz .b3d exporter
+
+version 1.0.3
+-fixed Ogre XML exporter to handle scaling on bones
+-fixed 2 bugs in the .X importer
+-fixed drawing error in the Properties pane when the scroll bar is visible
+-fixed bug in Blitz .b3d exporter where an unnecessary root bone was always added
+
+version 1.0.2
+-fixed bug when displaying multiple viewports
+
+version 1.0.1
+-added support for comments in Half-Life SMD files
+-added Lathe tool
+-fixed bug in split animations where FPS was set incorrectly
+-fixed bug in sprite creator where exported attachments were given the wrong coordinates
+-fixed bug in UV Mapper where uv coordinates stayed selected when hidden
+-fixed crash relating to merging vertex animated models
+-added function to remove unnecessary objects from .ugh files
+-improved bone creation tool
+
+version 1.0.0
+-switched texture import/export from Developers Image Library to FreeImage
+-added COLLADA mesh importer
+-fixed bug that caused undo units to stop being created
+-added tools to rotate and scale vertex normals
+-added texture viewer
+
+version 0.9.6
+-fixed 'Restore Tools' feature
+-added ability to use 'Transform Options' on vertex animations
+-added ability to use 'Transform Options' on animation keys
+-fixed crash in Quake 2 .md2 exporter
+-added ability to rename the mesh object
+-the .x exporter will now assign names to mesh nodes
+-added ability to modify bone transforms in local or world space
+
+version 0.9.5
+-added Wavefront OBJ importer/exporter
+-added Alias FBX importer
+-added Softimage XSI importer (mesh only)
+-update MS3D importer/exporter to work with Milkshape 1.8.0+
+-added tool to display information about each bone
+-fixed bug in 3D Gamestudio MDL7 import/export where models using multiple materials were saved incorrectly
+-added functions in the keyframe editor to split and append animations
+-improved handling of imported files that contain more than 4 weights per vertex
+-added vec2Lib and vec3Lib to LUA plugin to manipulate vectors in script
+-added ability to modify key values in local or world space with key scripts
+-unchecking groups in the export selected dialog now stops the associated mesh from exporting
+-added options to animation tools to change keys before and after the current frame
+-added ability to enable/disable key lists
+-improved animation merging
+-added batch file conversion
+-added ability to use a license file
+-added split bone tool
+-added split edges tool
+-added ability to save selections
+-added timer objects
+-added ability to show tool tips from script
+
+version 0.9.1a
+-fixed several errors caused by locale settings using commas for decimals
+-fixed bug where .ms3d models sometimes were imported without assigments
+-fixed infinite loop when opening a model file containing errors using the 'All Supported Files' filter
+-fixed bug where keyframes pasted into the keyframe editor were lost if they extended past the end of the animation
+-fixed incorrect export of sprite images whose width exceeded 1024 pixels
+-fixed problem with small models disappearing in the sprite creator because of near z-clipping
+-added option to sprite creator to save single frames in rows or columns
+-added option to sprite creator to save images with a uniform size
+-added option to 3D Gamestudio MDL7 exporter to store texture images internally or use a file path
+-added tools to modify the entire mesh or skeleton separately
+-widget tools will now display properties for the selected tool
+
+version 0.9.1
+-fixed crash in Quake 2 .md2 exporter
+-fixed missing uv coords for several basic shapes
+-fixed blue textures in 3D Gamestudio MDL7 importer
+-added support for exporting different skin color depths in 3D Gamestudio MDL7 exporter
+-added support for external texture references in 3D Gamestudio MDL7 exporter
+-fixed missing undo group in Merge Animation
+-fixed Half-Life .smd animations not loading with Merge Animation
+-fixed crash in keyframe editor when not all keylists were being shown
+-added anti-aliasing option to sprite creator
+-fixed a bug with the floor calculation in the sprite creator
+-when the remove alpha option is used when saving sprites the background will now remain transparent
+-fixed error in Blitz .b3d exporter when exporting multiple animations where the first and last keys were not set
+
+version 0.9.0
+-added sprite creation dialog
+-fixed scrollbars in KeyFrameSlider dialog
+-fixed Invoke button on Rotate and Scale tools
+-added Origin property to Rotate Object and Scale Object tools
+-removed restriction on number of vertices and faces exported to Quake 2 .md2 files
+-fixed crash in IMesh::GetTriangleStrips which is called by the .md2 exporter
+-added Merge Animation option to menu
+-added options to .x file exporter
+-fixed bug where .x files were invalid when exporting an animation with no keyframes
+-fixed bug where importing certain .x files would crash due to invalid VertexDuplicationIndices
+-added support for vertex animation
+-added importer Quake 2 .md2 files
+-added importers for 3D GameStudio MDL3, MDL4, MDL5
+-updated MS3D importer/exporter to support vertex weights
+-added undo/redo buttons to toolbar in the UVMapper and keyframe editor
+-added animation controls to the keyframe editor toolbar
+-added context menu items to flip textures and add/remove alpha values
+-added graphic tools for transformation and animation
+
+version 0.8.7
+-made attachments compatible with Torque models
+-fixed bug in the CreateFace tool where new faces weren't added to a group or smoothing group
+-added right click selection and column selection in the keyframe editor
+-added the ability to run a simple script on each selected key in the keyframe editor
+-removed uv grouping options from the toolbar in the UV Mapper and made the uv grouping dialog modeless
+-fixed more bugs in the DirectX .x importer/exporter
+-fixed bug in the DarkBasic .dbo importer where textures on sub meshes were not loaded
+-fixed a serious bug where an error in ui.xml would make the user interface unusable
+-fixed bugs in most of the importer/exporters that could have caused them not to load
+-fixed several bugs dealing with updating normals after changing the mesh
+-added ability to export individual mesh poses
+
+version 0.8.6
+-fixed several bugs in the DirectX .x exporter
+-added ability to edit values on individual faces using the FaceInfo tool
+-fixed bugs in Transform Options dialog dealing with the Stand At option
+-added functions to flip and reverse vertex normals
+-improved the Move,Rotate, and Scale tools to affect both the mesh and skeleton at the same time
+-added context menu functions to Bone to Select/Deselect vertices assigned to a branch of the skeleton
+-added context menu functions to Material
+-fixed the 'Adjust other weights' option in the Assign Influences dialog
+-fixed bug in the weight slider in the Assign Influences dialog
+
+version 0.8.5
+-fixed bug where keyframe editor copied invalid values during copy+paste
+-added several options to the DirectX .x exporter
+-reduced amount of memory used by undo units for keyframing
+-fixed bugs in the Half-Life .smd importer
+-fixed bug where program hangs if a script error is encountered during a drag+drop operation
+-added Paint Vertex Weights tool
+-added preference to set a range of colors for vertex weights
+-added display options for vertex assignments
+-added tool to show information about each vertex
+-added tool to show information about each face
+-added texture search directories to reduce texture loading errors
+-importers will no longer apply smoothing groups unless that information is present in the file
+-updating vertex normals will no longer affect faces that have no smoothing group applied
+-added function to validate vertex bone assignments and weights
+-added several options to selection tools
+-3D painting now supports painting with texture brushes
+-3D painting will no longer paint over the same pixel more than once
+-added support for negative vertex weights
+-added .bvh exporter
+-added OGRE .xml exporter
+-added 3DS mesh importer
+-updated the vertex assignment dialog to be more intuitive
+-fixed bug where alpha channel in textures wasn't being used when rendering
+-added new UV mapping dialog
+-added keyframe sliders dialog
+-added support for grouping faces outside of smoothing groups
+-groups will become hierarchial when exporting to .x based on vertex assignments
+-many improvements made to keyframe editor
+-fixed bug where .x, .b3d, and .dbo files were mirrored across the x axis
+-added more options for attachment rendering
+-added more properties to camera settings
+
+NOTE: plugins for fragMOTION 0.7.0 and earlier will not work with later versions.
+
+version 0.7.0
+-fixed bug in .x importer where multiple meshes were not handled right
+-fixed bug in .x importer/exporter where textures paths were not right
+-fixed bug in .x importer where skeletons sometimes loaded incorrectly
+-optimized .x exporter to only save frames that have key values
+-fixed bug in mesh rotation tools when the 3d viewport had the focus, rotation from the properties pane was wrong
+-added importer for Poser and Biovision .bvh files
+-fixed bug in 3D GameStudio MDL7 exporter dealing with improper export of normals
+-3D GameStudio MDL7 exporter can now export more than one skin
+-added support for vertex animation in the 3D GameStudio MDL7 exporter
+-added option to display bone assignments using colored vertices as well as lines
+-added automatic skin binding functions
+-tweaked bone merging so that names don't have to be exact for them to be considered equal (e.g. "Bip0_Head" == "Bip0 Head")
+-fixed bug in merge where skeleton was being overwritten
+-added onion skin preview
+-added new method for selecting faces
+-added ability to hide bones
+-added ability to copy and swap rows of key values with other rows in the keyframe editor
+-tool settings will now persist when fragMOTION is closed
+-fixed bug in mdl7 skins where setting any transparency in its material would cause it to disappear
+-fixed bug in 3D paint where negative uv coords caused the painting to occur at the wrong position
+-fixed opengl renderer not handling detail and alpha layers correctly
+-pressing delete while a viewport has the focus will now delete selected bones
+-fixed bug where grid spacing and axis size were changed whenever you loaded a model
+-added importer/exporter for Blitz Basic 3D .b3d files
+-added exporter for 3D GameStudio MDL3, MDL4 and MDL5 files
+-added ability to reverse the zoom direction of the mouse wheel
+-fixed mirror all tool
+-fixed bug where key accelerators didn't work on scripts that were imported from xml
+-improved grid scaling
+-setting keyframe values directly is now easier
+-added pose flipping
+-added separate rotate/move/zoom camera tools
+-added support for Half-Life 2 .smd files
+-fixed several bugs in the Half-Life .smd importer/exporter
+-shape creation tools will now work in the perspective view
+-fixed crash when using D3D9 renderer with video cards that don't support 32-bit textures
+-fixed random crashes when using lua script
+-fixed export problems to .x, .b3d, and .dbo when unreferenced vertices are present
+
+version 0.6.1
+-fixed problem with demo not working for people who had installed a previous version
+-fixed crash when lua scripts accessed the wrong fragEvent member
+-added the ability to enter the fragMOTION product code in the registration dialog which will allow the transfer of regcodes to a new machine
+-added AffectChildren option to Rotate/Move objects
+-Edit Key Values dialog can now set multiple key values
+-Edit Vertex dialog can now set multiple vertex values
+-can edit all joints from a single dialog now
+-fixed bug in .ms3d exporter where relative texture file paths weren't saved correctly
+-added opacity, brush shapes and anti-aliasing to the 3d painting tool
+-fixed bug where merging .ugh files sometimes created duplicate shortcuts
+-fixed bug in export schema dialog where some objects were being duplicated
+-added the ability to scroll vertically while dragging a selection in the keyframe editor
+-added a context menu to the tree in the keyframe editor
+-fixed bug in .smd exporter where bones were saved out of order and couldn't be loaded back into fragMOTION
+-TextureBlitter will now convert between rgb and bgr formats
+-added support for 3D GameStudio A6 MDL7 files
+
+version 0.6.0
+-x files that store a mesh per frame load correctly now
+-when loading .smd files containing a skeleton with more than one top level bone, the skeleton was transformed incorrectly
+-fixed a bug with loading .ugh files,  bones wouldn't be created if they had been moved
+-fixed a bug with loading .ugh files where vertex assignments were wrong if any bones had been deleted
+-fixed large memory leak
+-can now create sub folders on several folders in the schema
+-fixed a problem with near clipping when dealing with very small models
+-when the Assign Vertices dialog is showing you can now reassign vertices by selecting bones in the workspace
+-relative paths didn't always work when loading .ugh files
+-added support for Dark Basic .dbo files
+-replaced attachment viewer, attached characters are now shown by setting a file path on each attachment.  the file path will be persisted when saving to the .ugh format
+-added x,y,z properties to bones and attachments for direct manipulation of the position
+-added properties to mesh to show size, center, and dimensions
+-added x,y,z labels to axis
+-improved all the shape creation tools and updated them to use the new style plugin architecture
+-fixed a timing bug in animation controls and reduced its size
+-fixed incorrect return values in IMatrix4x4::Inverse,Transpose and matrixLib.inverse,transpose
+-rotation tools will now work in the 3d view
+-added a camera rotation lock to the 3d view that allows tools to be used without holding a key
+-all translation tools will use snap to grid now
+-added angle snap for rotation tools
+-fixed mirror bone functions and added functions to mirror in local space
+-user preferences stored in ui.xml and splitter layout will be preserved when upgrading future versions of fragMOTION
+-fixed bugs in keyframe rotation and translation tools where any kind of scaling applied to the skeleton would mess up the results
+-rotation tools will now display the pivot point
+-fixed problems with alphablending in opengl renderer
+-IUserObject::GetObjectByPath can now access classes and datatypes directly using the following path style "class:<class name>" and "datatype:<datatype name>"
+  this protects source code and scripts from changes to the path of the classes and datatypes.
+-optimized keyframe editor rendering and keyframe pasting
+-added dialog in keyframe editor to edit individual key values
+-improved inverse kinematics tool
+-fixed problem with displaying negative uv coordinates in the uv mapping dialog
+
+System Requirements
+===========
+
+Windows 98/ME/2000/XP/Vista
+256 MB RAM
+14 MB Disk Space
+DirectX 9.0 or OpenGL
+
+Notes
+===========
+
+studiomdl.exe was built using Valve's Half-Life SDK
+

@@ -1,0 +1,5 @@
+<schema name="Lua Script Classes" guid="{58BEF258-487E-4017-B750-CA0A0CEE5C8B}" version="1.0.0" >
+	<folder name="ScriptLanguages" >
+		<ScriptLanguage name="Lua" fileextension="lua" />
+	</folder>
+</schema>

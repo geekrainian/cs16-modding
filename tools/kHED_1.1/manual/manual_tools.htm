@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="ltr">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+<title>kHED :: Справка :: Инструменты</title>
+<style type="text/css">
+<!--
+/* General page style. The scroll bar colours only visible in IE5.5+ */
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+/* General font families for common tags */
+font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+a:link,a:active,a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+hr	{ height: 0px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+
+td.rowpic {
+		background-color: #FFFFFF;
+		background-image: url(forum/templates/subSilver/images/cellpic2.jpg);
+		background-repeat: repeat-y;
+}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url(forum/templates/subSilver/images/cellpic3.gif);
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			background-image: url(forum/templates/subSilver/images/cellpic1.gif);
+			background-color:#D1D7DC; border: #FFFFFF; border-style: solid; height: 28px;
+}
+
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px;
+}
+td.row3Right,td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid;
+}
+
+th.thHead,td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+	font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none; line-height : 120%; color : #000000;
+}
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #000000; }
+a.gen,a.genmed,a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #000000 }
+a.mainmenu		{ text-decoration: none; color : #006699;  }
+a.mainmenu:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: 12px; color : #006699; }
+a.forumlink 	{ text-decoration: none; color : #006699; }
+a.forumlink:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: 11px; color : #000000;}
+a.nav			{ text-decoration: none; color : #006699; }
+a.nav:hover		{ text-decoration: underline; }
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle,h1,h2	{ font-weight: bold; font-size: 11px; color : #000000; }
+a.topictitle:link   { text-decoration: none; color : #006699; }
+a.topictitle:visited { text-decoration: none; color : #5493B4; }
+a.topictitle:hover	{ text-decoration: underline; color : #DD6900; }
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : 11px; color : #000000;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : 10px; color : #000000; }
+
+/* The content of the posts (body of text) */
+.postbody { font-size : 12px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : #006699 }
+a.postlink:visited { text-decoration: none; color : #5493B4; }
+a.postlink:hover { text-decoration: underline; color : #DD6900}
+
+/* Copyright and bottom info */
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: -1px;}
+a.copyright		{ color: #444444; text-decoration: none;}
+a.copyright:hover { color: #000000; text-decoration: underline;}
+
+-->
+</style>
+
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5493B4">
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center">
+<tr>
+<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+</td>
+</tr>
+</table><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+<b style="font-size:16pt">Инструменты</b><br><br>
+<span class="genmed">
+&nbsp; Чтобы выбрать инструмент, кликните на соответствующей кнопке панели выбора инструментов.
+<br><br><img src="../manual_img/tools.jpg">
+<br><br><br><br>
+<a name="select"></a><b style="font-size:12pt">Select Tool</b><br><br>
+<img src="../manual_img/tool_select.jpg">
+<br><br>&nbsp; Этот инструмент позволяет выделить определенные объекты модели. Четыре кнопки соответствуют четырем режимам выделения: 
+<ul>
+<li><b>Вершины</b> (клавиша <b>1</b>)</li>;
+<li><b>Треугольники</b> (клавиша <b>2</b>);
+<li><b>Полигоны</b> - группы копланарных треугольников (клавиша <b>3</b>);
+<li><b>Группы</b> (клавиша <b>4</b>);
+</ul>
+&nbsp; В зависимости от выбранного режима доступны дополнительные опции. 
+<br><br>&nbsp; В режимах выделения <b>треугольников</b>, <b>полигонов</b> и <b>групп</b> доступна опция <b>By Vertex</b>, при включении которой объекты будут выделяться только при выделении их вершин.
+<br><br>&nbsp; В режиме выделения групп доступна опция <b>Group/Smoothing Group</b>, с помощью которой можно выбрать какой тип группы нужно выделить.
+<br><br>&nbsp; Во всех режимах доступна функция <b>Grow</b>, которая выделяет треугольники, имеющие выделенные вершины. Вот пример ее работы:
+<br><br>
+<img src="../manual_img/grow.jpg">
+<br><br>&nbsp; Чтобы выделить объект, кликните по нему левой кнопкой мыши в любом вьюпорте. Чтобы по очереди выделить несколько объектов, удерживайте клавишу <b>Shift</b> и нажимайте левой кнопкой мыши по каждому из них.
+<br><br>&nbsp; Чтобы снять выделение с объекта, кликните по нему правой кнопкой мыши удерживая клавишу <b>Shift</b>.
+<br><br>&nbsp; В ортогональных (2D) вьюпортах доступно выделение с помощью рамки. Удерживайте нажатой левую кнопку мыши и переместите указатель чтобы выделить сразу несколько объектов. Удерживайте нажатыми <b>Shift</b> и правую кнопку мыши и переместите указатель чтобы снять выделение сразу с нескольких объектов.
+
+<br><br><br><br>
+<a name="move"><b style="font-size:12pt">Move Tool (Q)</b><br><br>
+<img src="../manual_img/tool_move.jpg">
+<br><br>&nbsp; Этот инструмент перемещает выделенные вершины.
+<br><br>&nbsp; Чтобы переместить выделенные вершины, удерживайте нажатой левую кнопку мыши в любой 2D-проекции и перемещайте указатель.
+При выборе данного инструмента во всех 2D-вьюпортах отображаются стрелки, показывающие по каким осям будет осуществляться перемещение:
+<br><br><img src="../manual_img/tool_move_helper.jpg">
+<br><br>&nbsp; Активные оси обозначены желтым цветом. Чтобы перемещать объекты по одной оси, наведите указатель мыши на соответствующую стрелку, после чего переместите указатель удерживая левую кнопку мыши.
+<br><br>&nbsp; Также доступно перемещение объектов на определенное расстояние, введенное в поля ввода. Введите нужные значения и нажмите кнопку <b>Move</b> либо клавишу <b>Enter</b> чтобы переместить объекты.
+<br><br>&nbsp; Опция <b>Clone</b> позволяет создать произвольное число копий объектов, перемещенных на заданное расстояние. Введите число копий в поле <b>Number of clones</b> и режим вычисления расстояния <b>Interpolate</b> либо <b>Extrapolate</b> (Интерполяция и Экстраполяция). См. рисунок:
+<br><br><img src="../manual_img/tool_move_interp.jpg">
+
+<br><br><br><br>
+<a name="rotate"><b style="font-size:12pt">Rotate Tool (W)</b><br><br>
+<img src="../manual_img/tool_rotate.jpg">
+<br><br>&nbsp; Этот инструмент вращает выделенные вершины вокруг выбранной оси. При выборе инструмента в 2D-вьюпортах отображаются оси вращения:
+<br><br><img src="../manual_img/tool_rotate_helper.jpg">
+<br><br>&nbsp; Чтобы вращать объекты, удерживайте нажатой левую кнопку мыши в любой 2D-проекции и перемещайте указатель. Чтобы переместить ось вращения, наведите указатель мыши на окружность и перемещайте ось удерживая левую кнопку мыши.
+<br><br>&nbsp; Также доступна автоматическая установка осей вращения кнопками в опциях инструмента:
+<ul>
+<li><b>Bounds Center</b> - центр габаритов выделенных вершин;
+<li><b>Simple Average</b> - среднее арифметическое выделенных вершин;
+<li><b>Origin</b> - начало координат;
+</ul>
+&nbsp; При вращении в статусной строке показывается угол, на который в данный момент произведен поворот.
+<br><br>&nbsp; В опциях инструмента можно установить шаг угла вращения <b>Snap Angle</b>.
+<br><br>&nbsp; Опция <b>Clone</b> аналогична опции инструмента <b>Move Tool</b>
+
+<br><br><br><br>
+<a name="scale"><b style="font-size:12pt">Scale Tool (E)</b><br><br>
+<img src="../manual_img/tool_scale.jpg">
+<br><br>&nbsp; Этот инструмент позволяет масштабировать выделенные вершины. При его выборе во всех 2D-вьюпортах отображается вспомогательная рамка и крестик, относительно которого выполняется масштабирование.
+<br><br>&nbsp; Выполнять масштабирование можно несколькими способами:
+<ul>
+<li>В произвольной области любого 2D-вьюпорта (по двум осям);
+<li>С помощью одной из осей вспомогательного крестика (по одной оси);
+<li>С помощью вспомогательной рамки (по одной или двум осям);
+<li>Равномерно с помощью вспомогательных областей (по двум или трем осям).
+</ul>
+&nbsp; Активная ось, вдоль которой происходит масштабирование обозначена желтым цветом. Чтобы масштабировать объекты в равной мере по двум осям, воспользуйтесь этой областью:
+<br><br><img src="../manual_img/tool_scale_uni2d.jpg"><br><br>
+&nbsp; С помощью этой области выполняется равномерное масштабирование по всем трем осям:
+<br><br><img src="../manual_img/tool_scale_uni3d.jpg"><br><br>
+&nbsp; Переместить точку, относительно которой выполняется масштабирование, можно перетягиванием центра вспомогательного крестика с помощью указателя мыши либо кнопками группы <b>Set Pivots</b> в опциях инструмента:
+<ul>
+<li><b>Bounds Center</b> - центр габаритов выделенных вершин;
+<li><b>Simple Average</b> - среднее арифметическое выделенных вершин;
+<li><b>Origin</b> - начало координат;
+</ul>
+&nbsp; Также доступно масштабирование объектов по числовым значениям, введенным в поля ввода. Для этого введите нужные значения и нажмите кнопку <b>Scale</b> либо клавишу <b>Enter</b>. При этом масштабирование будет осуществляться относительно точки указанной в <b>Relative to</b>.
+<br><br>&nbsp; С помощью кнопок <b>Half</b> и <b>Double</b> можно соответственно уменьшить и увеличить объекты вдвое.
+
+<br><br><br><br>
+<a name="extrude"><b style="font-size:12pt">Extrude Tool (R)</b><br><br>
+<img src="../manual_img/tool_extrude.jpg">
+<br><br>&nbsp; Этот инструмент включает в себя три "под-инструмента":
+<ul>
+<li><b>Extrude</b>;
+<li><b>Bevel</b>;
+<li><b>Inset</b>.
+</ul>
+<img src="../manual_img/tool_extrude_modes.jpg">
+<br><br>&nbsp; В режиме <b>Extrude</b> доступны такие опции как:
+<ul>
+<li><b>Leave Original</b> - оставить копию исходных треугольников (копия разворачивается в обратную сторону). Это полезно для превращения плоских тел в объемные;
+<li><b>Direction</b> - направление извлечения. В режиме <b>By Normals</b> вершины перемещаются в направлении нормалей их треугольников. В режиме <b>Linear</b> вершины перемещаются аналогично инструменту <b>Move</b>;
+<li><b>Auto Smooth</b> - если включено, боковым треугольникам назначаются группы сглаживания, выбираемые по максимальному углу между треугольниками (<b>By Angle</b>). Либо все треугольники привязываются к одной группе сглаживания (<b>Single Group</b>).
+</ul>
+&nbsp; Во всех трех режимах доступна работа по числовым значениям. Для этого введите нужные значения и нажмите кнопку <b>Extrude</b>/<b>Bevel</b>/<b>Inset</b> (в зависимости от режима) либо клавишу <b>Enter</b>.
+
+<br><br><br><br>
+<a name="polygon"><b style="font-size:12pt">Polygon Tool</b><br><br>
+<img src="../manual_img/tool_polygon.jpg">
+<br><br>&nbsp; Данный инструмент имеет три режима работы:
+<ul>
+<li><b>Triangle</b> - треугольник;
+<li><b>Polygon</b> - полигон;
+<li><b>Complex Polygon</b> - сложный полигон (возможно, с отверстиями и специфической топологией).
+</ul>
+&nbsp; В режиме <b>Triangle</b> для создания треугольника нужно кликнуть в 2D-вьюпортах там, где должны быть расположены его вершины. Если навести указатель мыши на уже созданную вершину, последняя начнет мигать - это значит, что при клике по ней новая вершина создана не будет, а будет использована имеющаяся. Такое поведение можно отключить опцией <b>Snap to vertices</b>.
+<br><br><img src="../manual_img/tool_polygon_tri.jpg">
+<br><br>&nbsp; Аналогично создаются полигоны (режим <b>Polygon</b>). За исключением того, что все вершины нужно выбирать в том вьюпорте, где был совершен первый клик. Ребра полигона не должны пересекаться.
+<br>&nbsp; Чтобы завершить создание полигона кликните на первой его точке. После этого будет произведена триангуляция (разделение на треугольники) полигона.
+<br><br><img src="../manual_img/tool_polygon_poly.jpg">
+<br><br>&nbsp; Более сложные полигоны в режиме <b>Complex Polygon</b> создаются следующим образом: создается внешняя граница полигона, как и в режиме <b>Polygon</b>; внутри этих границ создаются дополнительные полигоны.
+<br>&nbsp; После создания внешней границы становятся доступными дополнительные опции:
+<ul>
+<li><b>Fill</b> - создаваемый внутренний полигон будет заполнен треугольниками;
+<li><b>Hole</b> - внутренний полигон будет отверстием;
+<li><b>End Line</b> - завершить линию (если она должна быть незамкнутой);
+<li><b>Triangulate</b> - Произвести триангуляцию.
+</ul>
+<img src="../manual_img/tool_polygon_cmp.jpg">
+<br><br>&nbsp; Если отмечена опция <b>Face To Front</b>, созданные треугольники будут обращены лицевой стороной к проекции, в которой они были созданы. В противном случае ориентация полигона будет зависеть от порядка следования вершин. Во всех режимах доступна опция <b>Two-sided</b>, при включении которой треугольники будут создаваться в двух экземплярах, с разной ориентацией лицевой стороны.
+
+<br><br><br><br>
+<a name="plane"><b style="font-size:12pt">Plane Tool</b><br><br>
+<img src="../manual_img/tool_plane.jpg">
+<br><br>&nbsp; Данный инструмент создает плоский прямоугольник, ориентрованный лицевой стороной к текущей проекции.
+<br>&nbsp; В полях <b>Rows</b> и <b>Columns</b> задаются количества сегментов соответственно по высоте и ширине. Опция <b>Turn Edge</b> задает способ поворота диагонального ребра:
+<ul>
+<li><b>No</b> - без поворота ребра;
+<li><b>Each Row</b> - поворот каждый ряд;
+<li><b>Each Column</b> - поворот каждый столбец;
+<li><b>Each Column And Row</b> - поворот каждый ряд и столбец.
+</ul>
+&nbsp; Опция <b>Invert</b> инвертирует опцию <b>Turn Edge</b>.
+<br><br>&nbsp; В поле <b>Preview</b> отображается вид создаваемой плоскости.
+<br><br>&nbsp; Чтобы создать плоскость, удерживайте нажатой левую кнопку мыши и переместите указатель в любом из 2D-вьюпортов.
+
+<br><br><br><br>
+<a name="box"><b style="font-size:12pt">Box Tool</b><br><br>
+<img src="../manual_img/tool_box.jpg">
+<br><br>&nbsp; Этот инструмент создает прямоугольный параллелепипед (бокс).
+<br>&nbsp; Создание бокса осуществляется в несколько шагов (в зависимости от опций). По умолчанию этот процесс состоит из двух шагов. На первом указывается ширина и высота (<b>Width</b> и <b>Height</b>) (посредством растягивания прямоугольника в 2D-вьюпорте), на втором - длина (<b>Length</b>).
+<br<br>&nbsp; Если значение <b>Fillet segs</b> больше нуля, добавляется третий шаг, на котором указывается значение <b>Fillet</b> (сглаживание краев):
+<br><br>&nbsp; Бокс со сглаженными краями (<b>Fillet segs</b> = 3):
+<br><br><img src="../manual_img/tool_box_fillet.jpg">
+<br><br>&nbsp; Опции <b>Height Stacks</b>, <b>Width Stacks</b> и <b>Length Stacks</b> позволяют задать количество сегментов соответственно по ширине, высоте и длине.
+<br><br>&nbsp; При включенной опции <b>Cube</b> высота, ширина и длина при создании бокса будут равны.
+<br><br>&nbsp; Текущие высота, ширина, длина и значение параметра сглаживания отображаются в строке состояния.
+
+<br><br><br><br>
+<a name="sphere"><b style="font-size:12pt">Sphere Tool</b><br><br>
+<img src="../manual_img/tool_sphere.jpg">
+<br><br>&nbsp; Этот инструмент создает сферу.
+<br>&nbsp; Доступно два алгоритма построения сферы: <b>Sphere</b> и <b>GeoSphere</b>:
+<br><br><img src="../manual_img/tool_sphere_types.jpg">
+<br><br>&nbsp; В режиме <b>Sphere</b> задается количество сторон (<b>Sides</b>) и вертикальных сегментов (<b>Stacks</b>). В режиме <b>GeoSphere</b> выбирается число итераций (<b>Iterations</b>): чем больше это число, тем больше треугольников будет содержать сфера.
+<br><br>&nbsp; Чтобы создать сферу, удерживайте нажатой левую кнопку мыши и переместите указатель в любом из 2D-вьюпортов. Положение сферы при этом зависит от опции <b>Creation Method</b>. 
+
+<br><br><br><br>
+<a name="cylinder"><b style="font-size:12pt">Cylinder Tool</b><br><br>
+<img src="../manual_img/tool_cylinder.jpg">
+<br><br>&nbsp; Этот инструмент создает цилиндр.
+<br>&nbsp; Для цилиндра доступны следующие параметры: 
+<ul>
+<li><b>Stacks</b> - сегменты по высоте;
+<li><b>Sides</b> - стороны;
+<li><b>Fillet Segs</b> - сегменты сглаживания;
+<li><b>Cap Segs</b> - сегменты верхней и нижней грани.
+</ul>
+&nbsp; Примеры цилиндров с разными значениями параметров:
+<br><br><img src="../manual_img/tool_cylinder_parms.jpg">
+<br><br>&nbsp; Опция <b>Cap Type</b> определяет тип триангуляции верхней и нижней граней цилиндра:
+<br><br><img src="../manual_img/tool_cylinder_caps.jpg">
+<br><br>&nbsp; Положение цилиндра при его создании задается опцией <b>Creation Method</b>.
+
+<br><br><br><br>
+<a name="tube"><b style="font-size:12pt">Tube Tool</b><br><br>
+<img src="../manual_img/tool_tube.jpg">
+<br><br>&nbsp; Этот инструмент создает полую трубу.
+<br>&nbsp; Для трубы доступны следующие параметры: 
+<ul>
+<li><b>In Stacks</b> - сегменты по высоте на внутренней стороне трубы;
+<li><b>In Sides</b> - стороны на внутренней стороне трубы;
+<li><b>Out Stacks</b> - сегменты по высоте на внешней стороне трубы;
+<li><b>Out Sides</b> - стороны на внешней стороне трубы;
+</ul>
+&nbsp; Труба создается в три шага: два шага для задания внутреннего и внешнего радиуса (внутренним считается меньший), один - для длины.
+<br><br>&nbsp; Если внутренний радиус трубы намного меньше внешнего, полезно уменьшить количество сторон на внутренней стороне чтобы понизить общее число треугольников.
+<br><br>&nbsp; Положение трубы при ее создании зависит от опции <b>Creation Method</b>.
+
+<br><br><br><br>
+<a name="torus"><b style="font-size:12pt">Torus Tool</b><br><br>
+<img src="../manual_img/tool_torus.jpg">
+<br><br>&nbsp; Этот инструмент создает торус.
+<br>&nbsp; Для торуса доступны следующие параметры: 
+<ul>
+<li><b>Sides</b> - количество сторон;
+<li><b>Segs</b> - количество сегментов;
+</ul>
+&nbsp; пример торуса с параметрами <b>Sides</b>=12, <b>Segs</b>=12:
+<br><br><img src="../manual_img/tool_torus_example.jpg">
+<br><br>&nbsp; Положение торуса при его создании задается опцией <b>Creation Method</b>.
+
+<br><br><br><br>
+<a name="lathe"><b style="font-size:12pt">Lathe Tool</b><br><br>
+<img src="../manual_img/tool_lathe.jpg">
+<br><br>&nbsp; Этот инструмент создает фигуру вращения по заданному контуру:
+<br><br><img src="../manual_img/tool_lathe_example.jpg">
+<br><br>&nbsp; Количество сторон фигуры задается парметром <b>Sides</b>.
+<br><br>&nbsp; Угол поворота задается параметром <b>Angle</b> и по умолчанию равен 360 (полный оборот). Если угол меньше 360, в фигуре появляется разрез. Триангуляция разреза контролируется опцией <b>Triangulate Slice</b>.
+<br><br><img src="../manual_img/tool_lathe_angle.jpg">
+<br><br>&nbsp; Доступны два режима редактирования:
+<ul>
+<li><b>Outline</b> - редактирование контура;
+<li><b>Axis</b> - перемещение оси вращения;
+</ul>
+&nbsp; Опция <b>Axis Orientation</b> позволяет выбрать ориентацию оси: <b>Vertical</b> и <b>Horizontal</b>.
+<br><br>&nbsp; Опция <b>Smoothing Group</b> позволяет заранее назначить сегментам контура определенную группу сглаживания. Соответственно сегменты окрашиваются в один из цветов.
+<br><br>&nbsp; Фигура создается при замыкании контура, либо по нажатию кнопок <b>Create</b> или <b>Close & Create</b>. Последняя замыкает контур перед созданием фигуры.
+<br><br>&nbsp; Если контур не замкнут, то фигура может получится "вывернутой наизнанку". Чтобы исправить ее выберите функцию <b>Edit -&gt; Reverse Vertex Order</b>.
+
+<br><br><br><br>
+<a name="loft"><b style="font-size:12pt">Loft Tool</b><br><br>
+<img src="../manual_img/tool_loft.jpg">
+<br><br>&nbsp; Данный инструмент может использоваться для разных целей. Он аналогичен многократному применению функции <b>Extrude</b> по заданному пути (контуру).
+<br><br>&nbsp; Для создания фигуры необходимо задать контур и сечение. По умолчанию сечение представляет собой окружность, количество сторон которой задается параметром <b>Sides</b>.
+<br><br>&nbsp; Вы также можете изменить форму сечения. Для этого кликните левой кнопкой мыши по области просмотра сечения. Это приведет к открытию диалогового окна <b>Section Editor</b>.
+<br><br><img src="../manual_img/section_editor.jpg">
+<br><br>&nbsp; Инструменты этого диалогового окна позволяют перемещать, вращать и масштабировать сечение относительно центра. Также можно отразить сечение по горизонтали и по вертикали. С помощью инструмента <b>Move Vertex</b> можно перемещать курсором мыши отдельные вершины сечения.
+<br><br>&nbsp; При создании контура доступны следующие режимы:
+<ul>
+<li><b>Outline</b> - редактирование контура;
+<li><b>Fillet</b> - изменение величины сглаживания на углах контура;
+<li><b>Section Scale</b> - масштабирование сечения;
+<li><b>Section Rotate</b> - вращение сечения;
+</ul>
+&nbsp; Все редактирование производится в 2D-вьюпортах. Контур создается кликами левой кнопки мыши. Отдельные точки контура можно перемещать удерживая левую кнопку мыши. Масштабирование, вращение и сглаживание углов производится перемещением указателя мыши при нажатой левой кнопке.
+<br><br>&nbsp; Параметр <b>Fillet Segs</b> задает количество сегментов сглаживания на углах контура.
+<br><br>&nbsp; Опция <b>Close Caps</b> включает триангуляцию крайних граней фигуры.
+<br><br>&nbsp; Когда фигура готова, нажмите кнопку <b>Create</b> чтобы создать ее.
+<br><br>&nbsp; С помощью кнопки <b>Close Outline</b> можно замкнуть контур, соединив его первую и последнюю точку.
+<br><br>&nbsp; Примеры фигур, созданных с помощью инструмента <b>Loft Tool</b>:
+<br><br><img src="../manual_img/tool_loft_examples.jpg">
+
+<br><br><br><br>
+<a name="mapping"><b style="font-size:12pt">Mapping Tool</b><br><br>
+<img src="../manual_img/tool_mapping.jpg">
+<br><br>&nbsp; Этот инструмент предназначен для проецирования текстурных координат, а также автоматической текстурной развертки.
+<br><br>&nbsp; Перед использованием инструмента необходимо выделить треугольники, для которых будут расчитываться текстурные координаты.
+<br><br>&nbsp; Доступно три вида проекции текстуры:
+<ul>
+<li><b>Planar</b> - планарная проекция;
+<li><b>Cylindrical</b> - цилиндрическая проекция;
+<li><b>Spherical</b> - сферическая проекция.
+</ul>
+&nbsp; Ориентация плоскости, цилиндра или сферы задается опцией <b>Projection</b> (если нужно сориентровать по одной из ортогональных проекций), либо вручную посредством преремещения указателя мыши с нажатой левой кнопкой в одном из 2D-вьюпортов.
+<br>&nbsp; Также есть возможность ориентации по нормали к любой поверхности модели. Для этого наведите указатель на нужную поверхность в перспективном (3D) вьюпорте и кликите по нему левой кнопкой мыши.
+<br><br><img src="../manual_img/tool_mapping_normal.jpg">
+<br><br>&nbsp; Чтобы применить проекцию текстуры, нажмите <b>Remap</b>.
+<br><br>&nbsp; В инструменте также доступна автоматическая текстурная развертка, для которой используется два алгоритма:
+<ul>
+<li><b>Unfold</b> - все треугольники поворачиваются к одной плоскости, образуя один непрерывный элемент;
+<li><b>Flatten</b> - треугольники делятся на разные элементы и для каждого из них делается планарная проекция;
+</ul>
+<br>&nbsp; После нажатия на кнопку одного из вариантов автоматической развертки открывается диалоговое окно, в котором видна полученная развертка. Пример развертки цилиндра:
+<br><br><img src="../manual_img/unfold.jpg">
+<br><br>&nbsp; Нажав на кнопку <b>Next</b> можно выбрать следующий треугольник в качестве начального. Это в некоторых случаях позволяет улучшить вид развертки.
+<br>&nbsp; Чтобы применить развертку, нажмите <b>Ok</b>. Или <b>Cancel</b> чтобы отменить.
+<br><br>&nbsp; В режиме <b>Flatten</b> это диалоговое окно имеет также параметр <b>Max. Angle</b>, который определяет максимальный угол, при котором треугольники могут принадлежать одному элементу.
+<br><br>&nbsp; Как правило этот инструмент используется в комбинации с ручным редактированием текстурных координат (См. <a href="manual_uv.htm">Редактор текстурных координат</a>).
+<br><br><br><br><br><br><br><br><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+</span><br>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

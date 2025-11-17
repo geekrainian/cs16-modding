@@ -1,0 +1,229 @@
+<schema name="double_click" guid="{2DB7CE28-F433-4345-8B9C-E18A7A0E5877}" version="1.1.0" >
+	<ClassFolder Name="Classes" Expand="True" InsertAfter="Extensions" >
+		<Class Name="Animation" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Character" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="ui.Schema.Scripts.WindowScripts.KeyframeEditor:Run();
+event.preventDefault = true;
+event.handled = true;" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="CurrentFrame" />
+		</Class>
+		<Class Name="Mesh" Desc="" CreateFlags="Copy|Delete|Rename|Merge|Render" IconFile="" Expand="True" InsertAfter="Event" >
+			<LuaLocalListener Name="HandleDropObject" ScriptCode="local src = event.obj;
+local mesh = IMesh(event.drop.dest);
+if (mesh:isSet()) then
+	if (src:DerivesFromID(CLASS_MATERIAL)) then
+		local mat = IMaterial(src);
+		if (mat:isSet()) then
+			mesh:CreateMeshUndoUnitEx(0, FACE_TEX, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Material&quot;);
+			mesh:AssignMaterial(mat, true);
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	elseif (src:DerivesFromID(CLASS_GROUP)) then
+		local group = IGroup(src);
+		if (group:isSet()) then
+			mesh:CreateMeshUndoUnitEx(0, FACE_GROUP, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Group&quot;);
+			mesh:AssignToGroup(group, true);
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	elseif (src:DerivesFromID(CLASS_SMOOTH)) then
+		local smooth = ISmoothingGroup(src);
+		if (smooth:isSet()) then
+			mesh:CreateMeshUndoUnitEx(0, FACE_SMOOTH+FACE_NORMALS, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Smoothing Group&quot;);
+			mesh:AssignToSmoothingGroup(smooth, true);
+			mesh:CreateVertexNormals(IModel(event.drop.dest:GetParentByDerivedClassID(CLASS_MODEL)));
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	end
+end
+" Language="Lua" Source="" FilterObject="" Events="DropObject" Filter="Source" Type="Class" Enabled="True" InsertAfter="Radius" />
+			<LuaLocalListener Name="HandleGetDropEffect" ScriptCode="local src = event.obj;
+if (src:DerivesFromID(CLASS_MATERIAL)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+elseif (src:DerivesFromID(CLASS_GROUP)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+elseif (src:DerivesFromID(CLASS_SMOOTH)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+else
+	event.dropEffect.effect = fragEffectNone;
+end
+" Language="Lua" Source="" FilterObject="" Events="GetDropEffect" Filter="Source" Type="Class" Enabled="True" InsertAfter="HandleDropObject" />
+		</Class>
+		<Class Name="Group" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Model" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="ui.Schema.Scripts.GroupScripts.SelectGroup:Run();
+event.preventDefault = true;
+event.handled = true;" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="Name" />
+			<LuaLocalListener Name="HandleDropObject" ScriptCode="local src = event.obj;
+local mesh = editChar:GetSelMesh();
+if (mesh:isSet()) then
+	if (src:DerivesFromID(CLASS_MATERIAL)) then
+		local mat = IMaterial(src);
+		if (mat:isSet()) then
+			local matID = src:GetID();
+			local groupID = event.drop.dest:GetID();
+			mesh:CreateMeshUndoUnitEx(0, FACE_TEX, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Material&quot;);
+			
+			local verts, numverts, tris, numtris = mesh:LockMesh();
+			for i = 0,numtris-1,1 do
+				if (tris[i].groupID == groupID) then
+					tris[i].matID = matID;
+				end
+			end
+			mesh:UnlockMesh();
+
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	elseif (src:DerivesFromID(CLASS_SMOOTH)) then
+		local smooth = ISmoothingGroup(src);
+		if (smooth:isSet()) then
+			local smoothID = src:GetID();
+			local groupID = event.drop.dest:GetID();
+			mesh:CreateMeshUndoUnitEx(0, FACE_SMOOTH, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Smoothing Group&quot;);
+			
+			local verts, numverts, tris, numtris = mesh:LockMesh();
+			for i = 0,numtris-1,1 do
+				if (tris[i].groupID == groupID) then
+					tris[i].smoothID = smoothID;
+				end
+			end
+			mesh:UnlockMesh();
+
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	end
+end
+" Language="Lua" Source="" FilterObject="" Events="DropObject" Filter="Source" Type="Class" Enabled="True" InsertAfter="HandleDoubleClick" />
+			<LuaLocalListener Name="HandleGetDropEffect" ScriptCode="local src = event.obj;
+if (src:DerivesFromID(CLASS_MATERIAL)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+elseif (src:DerivesFromID(CLASS_SMOOTH)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+else
+	event.dropEffect.effect = fragEffectNone;
+end
+" Language="Lua" Source="" FilterObject="" Events="GetDropEffect" Filter="Source" Type="Class" Enabled="True" InsertAfter="HandleDropObject" />
+		</Class>
+		<Class Name="SmoothingGroup" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Group" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="ui.Schema.Scripts.SmoothingGroupScripts.SelectSmoothingGroup:Run();
+event.preventDefault = true;
+event.handled = true;" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="Threshold" />
+			<LuaLocalListener Name="HandleDropObject" ScriptCode="local src = event.obj;
+local mesh = editChar:GetSelMesh();
+if (mesh:isSet()) then
+	if (src:DerivesFromID(CLASS_MATERIAL)) then
+		local mat = IMaterial(src);
+		if (mat:isSet()) then
+			local matID = src:GetID();
+			local smoothID = event.drop.dest:GetID();
+			mesh:CreateMeshUndoUnitEx(0, FACE_TEX, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Material&quot;);
+
+			local verts, numverts, tris, numtris = mesh:LockMesh();
+			for i = 0,numtris-1,1 do
+				if (tris[i].smoothID == smoothID) then
+					tris[i].matID = matID;
+				end
+			end
+			mesh:UnlockMesh();
+			
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	elseif (src:DerivesFromID(CLASS_GROUP)) then
+		local smooth = IGroup(src);
+		if (smooth:isSet()) then
+			local groupID = src:GetID();
+			local smoothID = event.drop.dest:GetID();
+			mesh:CreateMeshUndoUnitEx(0, FACE_GROUP, MESH_NOTIFY+MESH_UPDATE+MESH_NO_VERTS, &quot;Assign Group&quot;);
+			
+			local verts, numverts, tris, numtris = mesh:LockMesh();
+			for i = 0,numtris-1,1 do
+				if (tris[i].smoothID == smoothID) then
+					tris[i].groupID = groupID;
+				end
+			end
+			mesh:UnlockMesh();
+			
+			mesh:FireChangeEvent();
+			event.preventDefault = true;
+			event.handled = true;
+		end
+	end
+end
+" Language="Lua" Source="" FilterObject="" Events="DropObject" Filter="Source" Type="Class" Enabled="True" InsertAfter="HandleDoubleClick" />
+			<LuaLocalListener Name="HandleGetDropEffect" ScriptCode="local src = event.obj;
+if (src:DerivesFromID(CLASS_MATERIAL)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+elseif (src:DerivesFromID(CLASS_GROUP)) then
+	event.dropEffect.effect = fragEffectLink;
+	event.preventDefault = true;
+	event.handled = true;
+else
+	event.dropEffect.effect = fragEffectNone;
+end
+" Language="Lua" Source="" FilterObject="" Events="GetDropEffect" Filter="Source" Type="Class" Enabled="True" InsertAfter="HandleDropObject" />
+		</Class>
+		<Class Name="SelectionGroup" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="" Expand="True" InsertAfter="KeyFrameList" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="ui.Schema.Scripts.SelectionGroupScripts.SelectSelectionGroup:Run();
+event.preventDefault = true;
+event.handled = true;" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="FaceCount" />
+		</Class>
+		<Class Name="Material" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Texture" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="ui.Schema.Scripts.MaterialScripts.SelectByMaterial:Run();
+event.preventDefault = true;
+event.handled = true;
+" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="Transparency" />
+		</Class>
+		<Class Name="GroupFolder" Desc="" CreateFlags="Copy|Delete|Rename|Merge|Expanded" IconFile="" Expand="True" InsertAfter="MeshFolder" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="mesh = editChar:GetDefaultMesh();
+numsel = mesh:GetSelFaceCount();
+if (numsel &gt; 0) then
+	editChar:BeginUndoGroup(&apos;Create and assign group&apos;);
+	group = event.obj:CreateChildByID(&apos;&apos;, CLASS_GROUP, IUserObject());
+	mesh:AssignToGroup(IGroup(group), false);
+	mesh:CreateVertexNormals(IModel(activeChar.Model));
+	mesh:FireChangeEvent();
+	editChar:EndUndoGroup(true);
+	event.preventDefault = true;
+	event.handled = true;
+end
+
+" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="Create" />
+		</Class>
+		<Class Name="SmoothingGroupFolder" Desc="" CreateFlags="Copy|Delete|Rename|Merge|Expanded" IconFile="" Expand="True" InsertAfter="GroupFolder" >
+			<LuaLocalListener Name="HandleDoubleClick" ScriptCode="mesh = editChar:GetDefaultMesh();
+numsel = mesh:GetSelFaceCount();
+if (numsel &gt; 0) then
+	editChar:BeginUndoGroup(&apos;Create and assign smoothing group&apos;);
+	smooth = event.obj:CreateChildByID(&apos;&apos;, CLASS_SMOOTH, IUserObject());
+	mesh:AssignToSmoothingGroup(ISmoothingGroup(smooth), false);
+	mesh:CreateVertexNormals(IModel(activeChar.Model));
+	mesh:FireChangeEvent();
+	editChar:EndUndoGroup(true);
+	event.preventDefault = true;
+	event.handled = true;
+end
+
+" Language="Lua" Source="" FilterObject="" Events="DoubleClick" Filter="Source" Type="Class" Enabled="True" InsertAfter="Create" />
+		</Class>
+	</ClassFolder>
+</schema>

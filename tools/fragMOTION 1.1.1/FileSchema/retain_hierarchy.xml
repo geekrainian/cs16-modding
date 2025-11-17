@@ -1,0 +1,7 @@
+<schema name="DirectX" guid="{091C91AB-0E2C-44B9-8BDB-9150DDAC0207}" version="1.0.0" >
+	<ClassFolder Name="Classes" Expand="True" InsertAfter="Extensions" >
+		<Class Name="Group" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Model" >
+			<Property Name="ParentNode" Desc="Names which bone defined the mesh group." DataType="datatype:Text" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" Category="" InsertAfter="FaceCount" />
+		</Class>
+	</ClassFolder>
+</schema>

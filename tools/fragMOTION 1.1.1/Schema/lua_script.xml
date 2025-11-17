@@ -1,0 +1,22 @@
+<schema name="Lua Script Classes" guid="{58BEF258-487E-4017-B750-CA0A0CEE5C8B}" version="1.0.1" >
+	<classfolder name="Classes" >
+		<objectflags mask="0x00000011" flags="0x00000011" >
+			<class name="LuaScript" >
+				<property name="ScriptCode" datatype="datatype:ScriptCode" />
+				<property name="Language" datatype="datatype:Text" defaultvalue="Lua" propflags="ReadOnly" />
+			</class>
+			<class name="LuaUIScript" >
+				<inherit target="class:LuaScript" />
+				<inherit target="class:UIScript" />
+			</class>
+			<class name="LuaLocalListener" >
+				<inherit target="class:LuaScript" />
+				<inherit target="class:LocalListener" />
+			</class>
+			<class name="LuaGlobalListener" >
+				<inherit target="class:LuaScript" />
+				<inherit target="class:GlobalListener" />
+			</class>
+		</objectflags>
+	</classfolder>
+</schema>

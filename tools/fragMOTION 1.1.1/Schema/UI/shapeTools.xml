@@ -1,0 +1,367 @@
+<schema name="Shape Creation Tools" guid="{8F996BF2-6209-47f0-A8AF-4CC6E5ED3602}" version="1.0.6" >
+	<ClassFolder Name="Classes" _guid="" _version="1.0.0" Expand="True" InsertAfter="Extensions" >
+		<ClassFolder Name="ShapeTools" _guid="{3B032B44-8447-455B-B286-E359915D399F}" _version="1.0.0" Expand="True" InsertAfter="BreakFace" >
+			<Class Name="ShapeOrigin" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="" _guid="{EA31B762-FF33-437C-A911-B9B19AA3FD1E}" _version="1.0.0" Expand="False" InsertAfter="" >
+				<Property Name="Origin" Desc="Defines which point is the origin when drawing the new shape." DataType="datatype:DropDownEnums" EnumValues="./Schema/EnumLists/ShapeToolValues/ShapeOriginValues" DefaultValue="Center" PropFlags="" MinValue="" MaxValue="" _guid="{84156C5F-A1E1-4930-B85D-3B2CB087115E}" _version="1.0.0" InsertAfter="" />
+			</Class>
+			<Class Name="KeyboardCreate" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="" _guid="{26E90567-596E-4295-98AF-14036DC0E25E}" _version="1.0.0" Expand="False" InsertAfter="ShapeOrigin" >
+				<Property Name="X" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" _guid="{F793199E-3583-48F0-9E50-05E7AEB87E53}" _version="1.0.0" InsertAfter="" />
+				<Property Name="Y" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" _guid="{A9FE657E-2674-41EA-89E1-C72575FDE62B}" _version="1.0.0" InsertAfter="X" />
+				<Property Name="Z" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" _guid="{1CA43306-FD61-4E65-8FB5-F827A089761B}" _version="1.0.0" InsertAfter="Y" />
+				<Property Name="Create" Desc="Creates the shape." DataType="datatype:Invoke" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" _guid="{82FA4D22-3EDD-405B-A90C-EA0D820DA3F3}" _version="1.0.0" InsertAfter="Z" />
+			</Class>
+			<Class Name="ShapeTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="" _guid="{EE5D9EFA-09E3-4429-87AA-9EA1CE5E1252}" _version="1.0.0" Expand="False" InsertAfter="KeyboardCreate" >
+				<Inherit Name="Inherit" Target="class:Tool" _guid="{1AD8CEC7-ED2E-4346-83C0-50DD4CA792DE}" _version="1.0.0" InsertAfter="" />
+				<Inherit Name="Inherit2" Target="class:ShapeOrigin" _guid="{FC34F463-D87F-44AC-9277-5607C9770077}" _version="1.0.0" InsertAfter="Inherit" />
+				<Inherit Name="Inherit1" Target="class:KeyboardCreate" _guid="{C196FED6-BD12-4624-B63C-2705247849B5}" _version="1.0.0" InsertAfter="Inherit2" />
+				<Method Name="BeginShape" Desc="Initialize parameters used to create the shape." _guid="{EDB3B77E-9C40-43D0-91AA-6EF201AFA03E}" _version="1.0.0" InsertAfter="Inherit1" />
+				<Method Name="CreateShape" Desc="Creates the new shape with the current tool paramters and appends it to the character&apos;s mesh." _guid="{AEC2E325-D0C4-4EA6-86D4-4F6925F58C47}" _version="1.0.0" Expand="False" InsertAfter="BeginShape" >
+					<Parameter Name="Pane" Desc="" DataType="datatype:Short" EnumValues="" _guid="{8D122631-9372-4A9C-B720-EAF9D8E5ECAB}" _version="1.0.0" InsertAfter="" />
+					<Parameter Name="FromKeyboard" Desc="" DataType="datatype:Bool" EnumValues="" _guid="{5A8114DC-9F36-4596-A81C-C47978391606}" _version="1.0.0" InsertAfter="Pane" />
+				</Method>
+				<Method Name="UpdateTool" Desc="Update the tool&apos;s parameters based on the user input." _guid="{F26CA880-C070-4F58-8B39-E0291095076D}" _version="1.0.0" Expand="False" InsertAfter="CreateShape" >
+					<Parameter Name="Pane" Desc="" DataType="datatype:Short" EnumValues="" _guid="{E13478D7-DB47-4BAF-B2F6-E7BB1E8452D4}" _version="1.0.0" InsertAfter="" />
+				</Method>
+				<Property Name="ShowTool" Desc="" DataType="datatype:Bool" EnumValues="" DefaultValue="false" PropFlags="Hidden|ReadOnly|NoPersist" MinValue="" MaxValue="" _guid="{0E8D47E9-F22A-41D0-9CF7-1F115AADA746}" _version="1.0.0" InsertAfter="UpdateTool" />
+				<Property Name="CurClick" Desc="Current click count." DataType="datatype:Long" EnumValues="" DefaultValue="0" PropFlags="Hidden|ReadOnly|NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{6CF14A31-065B-483C-B0D2-3776C66AF8DE}" _version="1.0.0" InsertAfter="ShowTool" />
+				<Property Name="NumClicks" Desc="Number of clicks needed to create the shape." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="Hidden|Emulated|ReadOnly|NoPersist|UseMin" MinValue="1" MaxValue="" _guid="{B474159A-7219-4591-82DB-DE9982111A81}" _version="1.0.0" InsertAfter="CurClick" />
+				<Property Name="StartX" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{108C6CFF-237C-4253-BBB3-B2F456983942}" _version="1.0.0" InsertAfter="NumClicks" />
+				<Property Name="StartY" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{D4303CF3-6192-4626-BDDE-3A64BB0771C1}" _version="1.0.0" InsertAfter="StartX" />
+				<Property Name="EndX" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{E83AC7B9-23DC-4AF8-8F5D-BEE8667DE05E}" _version="1.0.0" InsertAfter="StartY" />
+				<Property Name="EndY" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{E0DC2D79-ABEF-462B-95A7-03AA18E8695E}" _version="1.0.0" InsertAfter="EndX" />
+				<Property Name="CurClickX" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{9089E9DE-AA47-42E8-8D86-E0E68440A838}" _version="1.0.0" InsertAfter="EndY" />
+				<Property Name="CurClickY" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{DFBD7C74-DABB-4079-8252-9AB8598047A8}" _version="1.0.0" InsertAfter="CurClickX" />
+				<Property Name="CurX" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{5ED741F4-86F4-47C4-967E-76FF59A5866A}" _version="1.0.0" InsertAfter="CurClickY" />
+				<Property Name="CurY" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="Hidden|NoPersist" MinValue="" MaxValue="" _guid="{E54E5E04-DD57-4139-92DD-24A4302005B9}" _version="1.0.0" InsertAfter="CurX" />
+				<LuaLocalListener Name="HandleSetStartPoint" ScriptCode="local method = event.method;
+this.ShowTool = true;
+if (this.CurClick == 0) then
+	this.CurClick = this.CurClick + 1;
+	this.StartX = method.x;
+	this.StartY = method.y;
+	this.CurClickX = method.x;
+	this.CurClickY = method.y;
+	this:BeginShape();
+end
+
+this:SetCurPoint(method.button, method.pane, method.view, method.x, method.y);
+" Source="" FilterObject="class:Tool/SetStartPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{72BC454F-6C4C-4302-9111-44CE614BCBC4}" _version="1.0.4" InsertAfter="CurY" />
+				<LuaLocalListener Name="HandleSetCurPoint" ScriptCode="local method = event.method;
+this.CurX = method.x;
+this.CurY = method.y;
+if (this.CurClick == 1) then
+	this.EndX = method.x;
+	this.EndY = method.y;
+end
+
+this:UpdateTool(method.pane); -- update the tool&apos;s parameters based on the current mouse position
+viewer:Redraw(true);
+" Source="" FilterObject="class:Tool/SetCurPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{C93B0545-DD7C-4721-AFE4-15B8D6B91872}" _version="1.0.4" InsertAfter="HandleSetStartPoint" />
+				<LuaLocalListener Name="HandleSetLastPoint" ScriptCode="local retCode = 1;
+local click = this.CurClick + 1;
+if (this.CurClick == this.NumClicks) then -- check to see if we have all the user input needed
+	this:CreateShape(event.method.pane, false); -- create the new shape and append it to the character&apos;s mesh
+	this.ShowTool = false; -- don&apos;t need to see the tool anymore
+	retCode = 0; -- user can stop clicking
+	click = 0;
+end
+
+this.CurClick = click; -- update the click count
+this.CurClickX = this.CurX;
+this.CurClickY = this.CurY;
+
+event.method.RetCode = retCode; -- return whether or not the tool needs another click to finish creating the shape
+
+
+" Source="" FilterObject="class:Tool/SetLastPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{0F404B6B-60D9-48EE-93D7-03D0B673F2CA}" _version="1.0.4" InsertAfter="HandleSetCurPoint" />
+				<LuaLocalListener Name="HandleCreate" ScriptCode="this:CreateShape(viewer:GetFocusPane(), true); -- create the shape with the current tool paramters
+
+" Source="" FilterObject="class:KeyboardCreate/Create" Events="PropertyChanged" Filter="Source" Type="Class" Enabled="True" _guid="{47CC0E0D-741C-48FE-A350-A72626EF2C59}" _version="1.0.0" InsertAfter="HandleSetLastPoint" />
+			</Class>
+			<Class Name="VertexTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="vertex.ico" _guid="{AF04F5EF-1CA2-4982-91CA-52DA6C0049FE}" _version="1.0.0" Expand="False" InsertAfter="ShapeTool" >
+				<Inherit Name="Inherit" Target="class:Tool" _guid="{2366FB98-6987-46E3-998F-86680ED150F8}" _version="1.0.0" InsertAfter="" />
+				<Inherit Name="Inherit1" Target="class:KeyboardCreate" _guid="{4DDBA414-7D36-48C8-9D86-E0B8FE121AF1}" _version="1.0.0" InsertAfter="Inherit" />
+				<LuaLocalListener Name="HandleSetStartPoint" ScriptCode="local method = event.method;
+local mesh = editChar:GetSelMesh();
+if (mesh:isSet()) then
+	viewer:SetDisplayFlags(method.pane, SHOW_VERTICES, SHOW_VERTICES);
+
+	-- get the world coords of the mouse coords
+	local coords = vertex3d_Array();
+	local points = vertex2d_Array(vertex2d(method.x, method.y));
+	viewer:ScreenToWorld(method.pane, points, 1, coords);
+
+	local v = fragVertex();
+	v.x, v.y, v.z = coords[0].x, coords[0].y, coords[0].z;
+	v.flags = VF_SELECTED; -- new vertex will be only thing selected
+
+	if (ui.schema.preferences.grid.SnapToGrid == true) then
+		v.x, v.y, v.z = viewer:SnapVertexToGrid(method.pane, v.x, v.y, v.z); -- snap to grid
+	end
+
+	mesh:CreateMeshUndoUnit(MESH_NOTIFY+MESH_UPDATE+ MESH_NO_TRIS, &apos;Create vertex&apos;); -- create an undo unit
+	mesh:SelectAll(false, 0); -- deselect rest of mesh
+	mesh:AddVertex(v); -- add the vertex
+
+	-- notify that the mesh has changed
+	mesh:FireChangeEvent();
+end
+" Source="" FilterObject="class:Tool/SetStartPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{85762A87-FF1E-4678-8405-F71E7D4BBCF1}" _version="1.0.4" InsertAfter="Inherit1" />
+				<LuaLocalListener Name="HandleCreate" ScriptCode="local mesh = editChar:GetSelMesh();
+if (mesh:isSet()) then
+	viewer:SetDisplayFlags(viewer:GetFocusPane(), SHOW_VERTICES, SHOW_VERTICES);
+
+	local v = fragVertex();
+	v.x, v.y, v.z = this.x, this.y, this.z;
+	v.flags = VF_SELECTED; -- new vertex will be only thing selected
+
+	mesh:CreateMeshUndoUnit(MESH_NOTIFY+MESH_UPDATE+ MESH_NO_TRIS, &apos;Create vertex&apos;); -- create an undo unit
+	mesh:SelectAll(false, 0); -- deselect rest of mesh
+	mesh:AddVertex(v); -- add the vertex
+
+	mesh:FireChangeEvent();
+end
+
+" Source="" FilterObject="class:KeyboardCreate/Create" Events="PropertyChanged" Filter="Source" Type="Class" Enabled="True" _guid="{BD58592B-FB7A-4C46-BBDF-BEE6CF7D50B9}" _version="1.0.4" InsertAfter="HandleSetStartPoint" />
+			</Class>
+			<Class Name="FaceTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="face.ico" _guid="{05F4738A-E737-448C-83E2-FF73F8430288}" _version="1.0.0" Expand="False" InsertAfter="VertexTool" >
+				<Inherit Name="Inherit" Target="class:Tool" _guid="{0109B13A-533B-4C63-90B2-8B8FF6150DF4}" _version="1.0.0" InsertAfter="" />
+				<Property Name="Tolerance" Desc="How close the cursor needs to be to a vertex in order to select it." DataType="datatype:Float" EnumValues="" DefaultValue="10" PropFlags="UseMin" MinValue="0" MaxValue="" _guid="{182ABCF8-139F-46EF-AFE9-4A62F925E827}" _version="1.0.0" InsertAfter="Inherit" />
+				<Property Name="Reset" Desc="Clears the selected vertices." DataType="datatype:Invoke" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" _guid="{C65FE35C-B949-4909-98A7-8F794A5D2868}" _version="1.0.0" InsertAfter="Tolerance" />
+				<Property Name="Backfaces" Desc="When true, new faces will be 2-sided." DataType="datatype:Bool" EnumValues="" DefaultValue="false" PropFlags="" MinValue="" MaxValue="" _guid="{B000EBE4-C595-42BA-96C0-D6E88B0DE644}" _version="1.0.0" InsertAfter="Reset" />
+			</Class>
+			<Class Name="BoxTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="cube.ico" _guid="{A46068F9-C634-401D-AF05-CED0B98A4F69}" _version="1.0.0" Expand="False" InsertAfter="FaceTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{96BF7533-7CB7-4F1F-938E-B2C6065EF2B7}" _version="1.0.0" InsertAfter="" />
+				<LuaLocalListener Name="GetNumClicks" ScriptCode="event.get.value.vt = VT_I4;
+if (this.BoxType == 0) then
+	event.get.value.lVal = 2; -- boxType == box
+else
+	event.get.value.lVal = 1; -- boxType == cube (all dimensions are the same)
+end
+event.preventDefault = true;
+event.handled = true;
+" Source="" FilterObject="class:ShapeTool/NumClicks" Events="GetValue" Filter="Source" Type="Class" Enabled="True" _guid="{CA9F32EF-1357-4BB7-90FD-D4EB7E688B11}" _version="1.0.4" InsertAfter="Inherit" />
+				<Property Name="Width" Desc="Width of the box." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{65C4B60B-E2E0-4CE4-BDE0-DFB009DDD64C}" _version="1.0.0" InsertAfter="GetNumClicks" />
+				<Property Name="Height" Desc="Height of the box." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{9B4B1BF4-981F-4587-98A2-7A925DB110CE}" _version="1.0.0" InsertAfter="Width" />
+				<Property Name="Length" Desc="Length of the box." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{E3828016-CC19-4CE5-BB5E-81050D796075}" _version="1.0.0" InsertAfter="Height" />
+				<Property Name="WidthSegs" Desc="Number of segments along the width of the box." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{71A0AB82-3A06-4D52-AE89-6149A3C378A1}" _version="1.0.0" InsertAfter="Length" />
+				<Property Name="HeightSegs" Desc="Number of segments along the height of the box." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{E1DF88AF-7198-4B16-834A-8E7315B85EEA}" _version="1.0.0" InsertAfter="WidthSegs" />
+				<Property Name="LengthSegs" Desc="Number of segments along the length of the box." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{293D1930-F16F-49F5-8DBA-7F1E4DB10B4B}" _version="1.0.0" InsertAfter="HeightSegs" />
+				<Property Name="BoxType" Desc="" DataType="datatype:DropDownEnums" EnumValues="./Schema/EnumLists/ShapeToolValues/BoxTypes" DefaultValue="Box" PropFlags="" MinValue="" MaxValue="" _guid="{B2A7D18D-B833-4A7F-AD69-B67EE86271E5}" _version="1.0.0" InsertAfter="LengthSegs" />
+			</Class>
+			<Class Name="ConeTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="cone.ico" _guid="{6652B043-F77A-4C6C-A7D1-77557A924018}" _version="1.0.0" Expand="False" InsertAfter="BoxTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{742359DF-91B3-44D8-8073-CB648E167283}" _version="1.0.0" InsertAfter="" />
+				<LuaLocalListener Name="GetNumClicks" ScriptCode="event.get.value.vt = VT_I4;
+if (this.Sideways == true) then
+	event.get.value.lVal = 2;
+else
+	event.get.value.lVal = 3;
+end
+event.preventDefault = true;
+event.handled = true;
+" Source="" FilterObject="class:ShapeTool/NumClicks" Events="GetValue" Filter="Source" Type="Class" Enabled="True" _guid="{4674F682-2CE9-4DD3-9C95-AAB4A9F3F09C}" _version="1.0.4" InsertAfter="Inherit" />
+				<Property Name="Length" Desc="Length of the cone." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{95B481D3-A056-4A9D-9961-D15779659DE8}" _version="1.0.0" InsertAfter="GetNumClicks" />
+				<Property Name="Radius1" Desc="Radius of the cone at the origin." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{B8DB9B2F-03B7-4F69-8FE7-450AB189C775}" _version="1.0.0" InsertAfter="Length" />
+				<Property Name="Radius2" Desc="Radius of the cone at the opposite end." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{29B0AA44-D56E-4426-A548-3D486CCA1FF7}" _version="1.0.0" InsertAfter="Radius1" />
+				<Property Name="LengthSegs" Desc="Number of segments along the length of the cone." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{11A28E6E-4703-487B-A2A8-F27EF8881379}" _version="1.0.0" InsertAfter="Radius2" />
+				<Property Name="CapSegs" Desc="Number of segments in the end caps." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="0" MaxValue="" _guid="{E95DE353-0AA5-417B-9E61-6935CCFB046C}" _version="1.0.5" InsertAfter="LengthSegs" />
+				<Property Name="Sides" Desc="Number of sides around the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="8" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{DD77B3B1-5ED8-4A27-BDD2-9E01E3FF2F1B}" _version="1.0.0" InsertAfter="CapSegs" />
+				<Property Name="Sideways" Desc="Tells whether or not to create the cone perpendicular to the viewer." DataType="datatype:Bool" EnumValues="" DefaultValue="False" PropFlags="" MinValue="" MaxValue="" _guid="{27BEA7D1-51A1-4030-9460-D79A33729CC3}" _version="1.0.0" InsertAfter="Sides" />
+			</Class>
+			<Class Name="CylinderTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="cylinder.ico" _guid="{D15E0A15-6B9A-4014-913F-DE9A187BEDD7}" _version="1.0.0" Expand="False" InsertAfter="ConeTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{B8EEBC1A-C614-45E7-89A2-87977D1A6933}" _version="1.0.0" InsertAfter="" />
+				<LuaLocalListener Name="GetNumClicks" ScriptCode="event.get.value.vt = VT_I4;
+if (this.Sideways == true) then
+	event.get.value.lVal = 1;
+else
+	event.get.value.lVal = 2;
+end
+event.preventDefault = true;
+event.handled = true;
+" Source="" FilterObject="class:ShapeTool/NumClicks" Events="GetValue" Filter="Source" Type="Class" Enabled="True" _guid="{8A72CC39-7496-491E-BC00-739A831BA95E}" _version="1.0.4" InsertAfter="Inherit" />
+				<Property Name="Length" Desc="Length of the cylinder." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{A18C9D01-B5E0-40DB-960A-376C26DF7A46}" _version="1.0.0" InsertAfter="GetNumClicks" />
+				<Property Name="Radius" Desc="Radius of the cylinder." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{878B5FD1-ADF2-47CD-BFC6-72E653970172}" _version="1.0.0" InsertAfter="Length" />
+				<Property Name="LengthSegs" Desc="Number of segments along the length of the cylinder." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{25E29C84-6DA7-47DE-8DF4-883A291F1E9B}" _version="1.0.0" InsertAfter="Radius" />
+				<Property Name="CapSegs" Desc="Number of segments in the end caps." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="0" MaxValue="" _guid="{C513FD16-FA51-4BBD-9EED-E8E2A31B52DE}" _version="1.0.0" InsertAfter="LengthSegs" />
+				<Property Name="Sides" Desc="Number of sides around the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="8" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{798A2AFB-9DC9-4EBE-B687-774D644F3817}" _version="1.0.5" InsertAfter="CapSegs" />
+				<Property Name="Sideways" Desc="Tells whether or not to create the cylinder perpendicular to the viewer." DataType="datatype:Bool" EnumValues="" DefaultValue="False" PropFlags="" MinValue="" MaxValue="" _guid="{6D64E3A3-018E-4D8A-AD26-72991A54F4BD}" _version="1.0.0" InsertAfter="Sides" />
+			</Class>
+			<Class Name="SphereTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="sphere.ico" _guid="{BB434741-048E-4C43-830C-49299875243B}" _version="1.0.0" Expand="False" InsertAfter="CylinderTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{2E673AA1-0251-467D-9B16-A618B068FA89}" _version="1.0.0" InsertAfter="" />
+				<Property Name="Radius" Desc="Radius of the sphere." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{CB45CE76-E34A-4E9F-8D11-7237E52BF2D2}" _version="1.0.0" InsertAfter="Inherit" />
+				<Property Name="Sides" Desc="Number of sides around the the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="8" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{A4AE6BED-9B90-4240-904B-935814A206A6}" _version="1.0.0" InsertAfter="Radius" />
+				<Property Name="Segments" Desc="Number of segments along the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="4" PropFlags="UseMin" MinValue="2" MaxValue="" _guid="{48965E03-AE6B-4114-BBAF-DFD5D55D1A11}" _version="1.0.0" InsertAfter="Sides" />
+			</Class>
+			<Class Name="GeosphereTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="sphere.ico" _guid="{E8030586-0A97-49DA-930F-4BC470A8D501}" _version="1.0.0" Expand="False" InsertAfter="SphereTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{06CE2F47-4FFC-4431-8BDC-ABAFDD29425F}" _version="1.0.0" InsertAfter="" />
+				<Property Name="Radius" Desc="Radius of the sphere." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{5AFB70ED-94D3-4281-8F7E-A1D9DE9609C5}" _version="1.0.0" InsertAfter="Inherit" />
+				<Property Name="Subdivisions" Desc="Number of times the sphere gets subdivided." DataType="datatype:Long" EnumValues="" DefaultValue="3" PropFlags="UseMin|UseMax" MinValue="1" MaxValue="6" _guid="{69D7CF10-B41A-4A6B-A51A-050FA9058939}" _version="1.0.2" InsertAfter="Radius" />
+				<Property Name="BaseShape" Desc="Shape of the geosphere when Subdivisions = 1." DataType="datatype:DropDownEnums" EnumValues="./Schema/EnumLists/ShapeToolValues/GeosphereBaseShape" DefaultValue="Octahedron" PropFlags="" MinValue="" MaxValue="" _guid="{4C75D302-8DFC-4CF2-A890-5B5A63BFAE87}" _version="1.0.0" InsertAfter="Subdivisions" />
+			</Class>
+			<Class Name="TubeTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="tube.ico" _guid="{15250B65-1DEC-4835-82C5-7336EE263366}" _version="1.0.0" Expand="False" InsertAfter="GeosphereTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{A4176E37-30A4-47F1-AC71-E0B395ECA09B}" _version="1.0.0" InsertAfter="" />
+				<LuaLocalListener Name="GetNumClicks" ScriptCode="event.get.value.vt = VT_I4;
+event.get.value.lVal = 3;
+event.preventDefault = true;
+event.handled = true;
+" Source="" FilterObject="class:ShapeTool/NumClicks" Events="GetValue" Filter="Source" Type="Class" Enabled="True" _guid="{A698B0B8-A22F-443C-BEA6-4F5DC929BB2A}" _version="1.0.4" InsertAfter="Inherit" />
+				<Property Name="Height" Desc="Height of the tube." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist" MinValue="" MaxValue="" _guid="{84DE2957-4D1B-4DC5-879B-57D7F9A10AE2}" _version="1.0.0" InsertAfter="GetNumClicks" />
+				<Property Name="Radius1" Desc="Inner radius" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{EDD92E6D-27EA-4B62-B6DF-5309E2893046}" _version="1.0.0" InsertAfter="Height" />
+				<Property Name="Radius2" Desc="Outer radius." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{75145891-671E-4057-B001-E79C0BBC06EE}" _version="1.0.0" InsertAfter="Radius1" />
+				<Property Name="HeightSegs" Desc="Number of segments along the height of the tube." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{2705FF89-EB17-4039-860E-532FC096328D}" _version="1.0.0" InsertAfter="Radius2" />
+				<Property Name="CapSegs" Desc="Number of radial segments." DataType="datatype:Long" EnumValues="" DefaultValue="1" PropFlags="UseMin" MinValue="1" MaxValue="" _guid="{F50DE2CB-499B-456C-A767-93A51C6ACE23}" _version="1.0.0" InsertAfter="HeightSegs" />
+				<Property Name="Sides" Desc="Number of sides around the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="8" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{9E5C8A8A-AC6F-46B7-B138-4CA903E532CC}" _version="1.0.0" InsertAfter="CapSegs" />
+			</Class>
+			<Class Name="TorusTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="torus.ico" _guid="{43A00E90-EC70-457F-8B2E-CA00DB707BE9}" _version="1.0.0" Expand="False" InsertAfter="TubeTool" >
+				<Inherit Name="Inherit" Target="class:ShapeTool" _guid="{3927DE9B-E16C-4821-B118-3314BFAA7F1F}" _version="1.0.0" InsertAfter="" />
+				<LuaLocalListener Name="GetNumClicks" ScriptCode="event.get.value.vt = VT_I4;
+event.get.value.lVal = 2;
+event.preventDefault = true;
+event.handled = true;
+" Source="" FilterObject="class:ShapeTool/NumClicks" Events="GetValue" Filter="Source" Type="Class" Enabled="True" _guid="{BA4A4654-9B45-4ED7-8E7D-2ECE286BA381}" _version="1.0.4" InsertAfter="Inherit" />
+				<Property Name="Radius1" Desc="InnerRadius" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{C94D4F06-0A6E-4D02-A6D8-247675553EA3}" _version="1.0.0" InsertAfter="GetNumClicks" />
+				<Property Name="Radius2" Desc="Outer radius." DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="NoPersist|UseMin" MinValue="0" MaxValue="" _guid="{9524E8EF-76B3-4F46-A531-9A1C0F7992D4}" _version="1.0.0" InsertAfter="Radius1" />
+				<Property Name="Rotation" Desc="Rotational offset of the circle that is spun around the axis." DataType="datatype:Angle" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" _guid="{A74A63C8-453B-4330-9A84-0B59D43560E4}" _version="1.0.0" InsertAfter="Radius2" />
+				<Property Name="Segments" Desc="Number of segments around the axis of rotation." DataType="datatype:Long" EnumValues="" DefaultValue="16" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{B842B5B9-4F39-4F9B-82CF-2E751206B568}" _version="1.0.0" InsertAfter="Rotation" />
+				<Property Name="Sides" Desc="Number of sides in the circle that is spun around the axis." DataType="datatype:Long" EnumValues="" DefaultValue="8" PropFlags="UseMin" MinValue="3" MaxValue="" _guid="{982984D1-CAEE-4594-8088-E57252C8DF55}" _version="1.0.0" InsertAfter="Segments" />
+			</Class>
+			<Class Name="BoneTool" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="bone.ico" _guid="{939A7F43-F31C-434A-98C4-F73C75E4DB18}" _version="1.0.0" Expand="False" InsertAfter="TorusTool" >
+				<Inherit Name="Inherit" Target="class:Tool" _guid="{67DC70D0-0CD4-4299-818A-8F562E5F477B}" _version="1.0.0" InsertAfter="" />
+				<Inherit Name="Inherit1" Target="class:KeyboardCreate" _guid="{02A5A70F-A900-4A6F-9BED-8CD243BFE2FE}" _version="1.0.0" InsertAfter="Inherit" />
+				<Method Name="CreateBone" Desc="Creates a bone at the given world space coords as a child of the primary selected bone.." _guid="{37C24B2D-00BF-4629-985A-25CDC4BD34EB}" _version="1.0.0" Expand="False" InsertAfter="Inherit1" >
+					<Parameter Name="x" Desc="World space x coordinate." DataType="datatype:Float" EnumValues="" _guid="{56250E8D-46A2-4A64-921E-9BDCA398E3A1}" _version="1.0.0" InsertAfter="" />
+					<Parameter Name="y" Desc="World space y coordinate." DataType="datatype:Float" EnumValues="" _guid="{9AA4FE04-A3AD-4FE3-B49A-8A4CD9A1CC86}" _version="1.0.0" InsertAfter="x" />
+					<Parameter Name="z" Desc="World space z coordinate." DataType="datatype:Float" EnumValues="" _guid="{D07B6069-97DD-4799-A244-85F918188EBE}" _version="1.0.0" InsertAfter="y" />
+				</Method>
+				<LuaLocalListener Name="HandleSetStartPoint" ScriptCode="local method = event.method;
+editChar:SetSelAnimation(IAnimation(), selSingle); -- show init pose when creating bones
+viewer:SetDisplayFlags(method.pane, SHOW_SKELETON, SHOW_SKELETON); -- make sure the skeleton is visible
+
+local x, y, z = 0, 0, 0;
+local hitTest = IFragHitTest2(viewer);
+local res = hitTest:HitTestFaceEx(method.pane, method.x, method.y, htBackfaces);
+local num, count = 0, 0;
+local hit = faceHitInfo_Array();
+
+if (res:isSet()) then
+	repeat
+		num = res:Next(1, hit);
+		if (num == 1) then
+			x = x + hit[0].pos.x;
+			y = y + hit[0].pos.y;
+			z = z + hit[0].pos.z;
+			count = count + 1;
+		end
+	until (num == 0);
+end
+
+if (count == 0) then
+	local coords = vertex3d_Array();
+	local points = vertex2d_Array(vertex2d(method.x, method.y));
+	viewer:ScreenToWorld(method.pane, points, 1, coords);
+
+	x, y, z = coords[0].x, coords[0].y, coords[0].z;
+else
+	x = x / count;
+	y = y / count;
+	z = z / count;
+end
+
+if (ui.schema.preferences.grid.SnapToGrid == true) then
+	x, y, z = viewer:SnapVertexToGrid(method.pane, x, y, z); -- snap to grid
+end
+
+this:CreateBone(x, y, z);
+" Source="" FilterObject="class:Tool/SetStartPoint" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{95DC5728-B37A-4367-8C01-E8E48DEF1F59}" _version="1.0.4" InsertAfter="CreateBone" />
+				<LuaLocalListener Name="HandleCreate" ScriptCode="editChar:SetSelAnimation(IAnimation(), selSingle); -- show init pose when creating bones
+viewer:SetDisplayFlags(viewer:GetFocusPane(), SHOW_SKELETON, SHOW_SKELETON); -- make sure the skeleton is visible
+
+local mtx = matrixLib.translation(this.x, this.y, this.z);
+
+local skel = editChar:GetSkeleton();
+local parent = editChar:GetSelBone();
+if (parent:isSet()) then
+	local id = parent.ID;
+	local mtxLocal = matrix_Array();
+	local boneMap = BOOL_Array();
+	skel:BuildLocalTransformList(mtxLocal, boneMap, 256);
+	mtx = matrixLib.multiply(mtx, mtxLocal[id]);
+end
+
+this:CreateBone(mtx.m[12], mtx.m[13], mtx.m[14]);
+" Source="" FilterObject="class:KeyboardCreate/Create" Events="PropertyChanged" Filter="Source" Type="Class" Enabled="True" _guid="{9C1FD851-2504-48E3-9C95-9F87BE05C481}" _version="1.0.4" InsertAfter="HandleSetStartPoint" />
+				<LuaLocalListener Name="HandleCreateBone" ScriptCode="local method = event.method;
+local mtx = matrixLib.translation(method.x, method.y, method.z);
+
+editChar:BeginUndoGroup(&apos;Create Bone&apos;);
+editChar:PreventUpdates(PF_SKELETON_EVENTS, true);
+
+local newBone;
+local skel = editChar:GetSkeleton();
+local parent = editChar:GetSelBone();
+if (parent:isSet()) then
+	local id = parent.ID;
+	local mtxLocal = matrix_Array();
+	local boneMap = BOOL_Array();
+	skel:BuildLocalTransformList(mtxLocal, boneMap, 256);
+	mtx = matrixLib.multiply(mtx, matrixLib.inverse(mtxLocal[id], matrixLib.determinant(mtxLocal[id])));
+	newBone = parent:CreateBone(&apos;&apos;, 0, mtx);
+else
+	newBone = skel:CreateBone(&apos;&apos;, 0, mtx);
+end
+
+editChar:PreventUpdates(PF_SKELETON_EVENTS, false);
+editChar:EndUndoGroup(true);
+
+editChar:SetSelBone(newBone, selSingle);
+
+" Source="" FilterObject="class:BoneTool/CreateBone" Events="MethodCall" Filter="Source" Type="Class" Enabled="True" _guid="{83E9746E-A804-4810-BBBE-3BD36FEC0FC9}" _version="1.0.4" InsertAfter="HandleCreate" />
+			</Class>
+		</ClassFolder>
+	</ClassFolder>
+	<EnumListFolder Name="EnumLists" _guid="" _version="1.0.0" Expand="True" InsertAfter="DataTypes" >
+		<EnumListFolder Name="ShapeToolValues" _guid="{60368E74-46E4-4F44-9011-4E7539DCC6F5}" _version="1.0.0" Expand="True" InsertAfter="OnionSkinValues" >
+			<EnumList Name="ShapeOriginValues" Desc="" _guid="{BE975172-8BFB-4039-BEE8-7D8E64CD672F}" _version="1.0.0" Expand="False" InsertAfter="" >
+				<EnumVal Name="Edge" Desc="" Value="0" _guid="{76A6274F-8B12-424E-B04A-A32698787D3B}" _version="1.0.0" InsertAfter="" />
+				<EnumVal Name="Center" Desc="" Value="1" _guid="{B3F2E3A0-20D3-48D6-ABB9-260F26349808}" _version="1.0.0" InsertAfter="Edge" />
+			</EnumList>
+			<EnumList Name="BoxTypes" Desc="" _guid="{0515131D-0576-4568-947E-B7ECB2A7A175}" _version="1.0.0" Expand="False" InsertAfter="ShapeOriginValues" >
+				<EnumVal Name="Box" Desc="" Value="0" _guid="{F5474AFA-CE91-4440-9A71-7D76D7881E93}" _version="1.0.0" InsertAfter="" />
+				<EnumVal Name="Cube" Desc="" Value="1" _guid="{77914C56-1F35-40B3-8076-4E9D3C151F17}" _version="1.0.0" InsertAfter="Box" />
+			</EnumList>
+			<EnumList Name="GeosphereBaseShape" Desc="" _guid="{0EEFD354-4EC7-4498-8807-2FF81D099894}" _version="1.0.0" Expand="False" InsertAfter="BoxTypes" >
+				<EnumVal Name="Tetrahedron" Desc="" Value="0" _guid="{C8D1B05D-71B1-4689-A272-918347CFE369}" _version="1.0.0" InsertAfter="" />
+				<EnumVal Name="Octahedron" Desc="" Value="1" _guid="{124186D9-F94B-4EB7-8A78-BF984AAF8632}" _version="1.0.0" InsertAfter="Tetrahedron" />
+				<EnumVal Name="Icosahedron" Desc="" Value="2" _guid="{6BE3BD1C-BD08-4A7B-8A04-7CBF1D853B2F}" _version="1.0.0" InsertAfter="Octahedron" />
+			</EnumList>
+		</EnumListFolder>
+	</EnumListFolder>
+	<ToolFolder Name="Tools" _guid="" _version="1.0.0" Expand="True" InsertAfter="ContextMenus" >
+		<VertexTool Name="Vertex" Version="1.0" Category="Create" Desc="Create a vertex by clicking in the viewer." Flags="" Key="1" Modifiers="" X="0" Y="0" Z="0" _guid="{2EC9E304-4A11-40ED-91CB-18CE35E2BC1B}" _version="1.0.0" InsertAfter="" />
+		<FaceTool Name="Face" Tolerance="10" Backfaces="False" Version="1.0" Category="Create" Desc="Create a face by clicking 3 vertices." Flags="" Key="2" Modifiers="" _guid="{2C13F9DB-D90C-4F04-8B15-E1DC5EBEEB85}" _version="1.0.0" InsertAfter="Vertex" />
+		<BoxTool Name="Box" WidthSegs="1" HeightSegs="1" LengthSegs="1" BoxType="Box" Version="1.0" Category="Create" Desc="Creates a box." Flags="" Key="3" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{EAABFBE4-C985-4A2F-80AA-4BF6AAAEE3F6}" _version="1.0.0" InsertAfter="Face" />
+		<ConeTool Name="Cone" LengthSegs="1" CapSegs="1" Sides="8" Sideways="False" Version="1.0" Category="Create" Desc="Creates a cone." Flags="" Key="4" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{2E839013-41E5-4886-B2FD-C30507B84673}" _version="1.0.0" InsertAfter="Box" />
+		<CylinderTool Name="Cylinder" LengthSegs="1" CapSegs="1" Sides="8" Sideways="False" Version="1.0" Category="Create" Desc="Creates a cylinder." Flags="" Key="5" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{787D7DD3-5B11-45B8-8095-9F3EC114A5B9}" _version="1.0.0" InsertAfter="Cone" />
+		<SphereTool Name="Sphere" Sides="8" Segments="4" Version="1.0" Category="Create" Desc="Creates a sphere." Flags="" Key="6" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{68B54F13-8CDD-4C36-BA42-C277A1E5A4D8}" _version="1.0.0" InsertAfter="Cylinder" />
+		<GeosphereTool Name="Geosphere" Subdivisions="3" BaseShape="Octahedron" Version="1.0" Category="Create" Desc="Creates a geosphere." Flags="" Key="7" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{9BCDA2F8-B52D-442F-9F05-F3B0C23BF3B4}" _version="1.0.6" InsertAfter="Sphere" />
+		<TubeTool Name="Tube" HeightSegs="1" CapSegs="1" Sides="8" Version="1.0" Category="Create" Desc="Creates a tube." Flags="" Key="8" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{06690773-D208-4C9E-BD83-9DE4FACAC7C6}" _version="1.0.0" InsertAfter="Geosphere" />
+		<TorusTool Name="Torus" Rotation="0" Segments="16" Sides="8" Version="1.0" Category="Create" Desc="Creates a torus." Flags="" Key="9" Modifiers="" Origin="Center" X="0" Y="0" Z="0" _guid="{850FE775-5388-4389-AFD9-A6C10A4DB047}" _version="1.0.0" InsertAfter="Tube" />
+		<BoneTool Name="Bone" Version="1.0" Category="Create" Desc="Creates a bone as a child of the primary selected bone." Flags="" Key="0" Modifiers="" X="0" Y="0" Z="0" _guid="{D5299252-0D6B-4E06-BB98-189EA8215BB2}" _version="1.0.0" InsertAfter="Torus" />
+	</ToolFolder>
+	<ToolDisplayFolder Name="ToolDisplayLists" _guid="" _version="1.0.3" Expand="True" InsertAfter="ToolWrappers" >
+		<ToolDisplayList Name="Default" Key="(none)" Modifiers="" _guid="" _version="1.0.3" Expand="True" InsertAfter="" >
+			<ToolCategory Name="Create" _guid="{748FE538-761D-449A-ABB1-580F8BCCBEFA}" _version="1.0.3" Expand="True" >
+				<ToolShortcut Name="ToolShortcut" Target="./Schema/Tools/Vertex" _guid="{E9E60B14-5CBC-4030-9D56-2948907B1003}" _version="1.0.3" InsertAfter="" />
+				<ToolShortcut Name="ToolShortcut1" Target="./Schema/Tools/Face" _guid="{D2A7B798-AE47-48F6-8872-96D0FA4ADC8D}" _version="1.0.3" InsertAfter="ToolShortcut" />
+				<ToolShortcut Name="ToolShortcut2" Target="./Schema/Tools/Box" _guid="{FD6CF196-8112-4902-99BD-87EC8E51AB77}" _version="1.0.3" InsertAfter="ToolShortcut1" />
+				<ToolShortcut Name="ToolShortcut3" Target="./Schema/Tools/Cone" _guid="{906AC11E-49A5-41C1-83A8-7708FDC6A46D}" _version="1.0.3" InsertAfter="ToolShortcut2" />
+				<ToolShortcut Name="ToolShortcut4" Target="./Schema/Tools/Cylinder" _guid="{9E3A10E7-312B-47CB-9EC1-35300643B82B}" _version="1.0.3" InsertAfter="ToolShortcut3" />
+				<ToolShortcut Name="ToolShortcut5" Target="./Schema/Tools/Sphere" _guid="{CBE6DD11-162F-4018-ADE3-A72916D1F6D3}" _version="1.0.3" InsertAfter="ToolShortcut4" />
+				<ToolShortcut Name="ToolShortcut6" Target="./Schema/Tools/Geosphere" _guid="{E24B9425-9435-471A-BAAC-EB050BF345E4}" _version="1.0.3" InsertAfter="ToolShortcut5" />
+				<ToolShortcut Name="ToolShortcut7" Target="./Schema/Tools/Tube" _guid="{89D49971-1BB1-483E-A57F-417C49815EB2}" _version="1.0.3" InsertAfter="ToolShortcut6" />
+				<ToolShortcut Name="ToolShortcut8" Target="./Schema/Tools/Torus" _guid="{489BEA57-B195-483A-9F19-2EC199C0D376}" _version="1.0.3" InsertAfter="ToolShortcut7" />
+				<ToolShortcut Name="ToolShortcut9" Target="./Schema/Tools/Bone" _guid="{625FC2E7-AE60-4483-BCF5-AD6EF5E94A32}" _version="1.0.3" InsertAfter="ToolShortcut8" />
+			</ToolCategory>
+		</ToolDisplayList>
+	</ToolDisplayFolder>
+</schema>

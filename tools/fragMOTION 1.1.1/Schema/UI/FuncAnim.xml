@@ -1,0 +1,10 @@
+<schema name="Animation Functions" guid="{B9B26A82-E74D-455f-9B96-32EA8C6AFE05}" version="1.0.0" >
+	<Menu Name="MainMenu" Caption="" IconFile="" _guid="" _version="" InsertBefore="MainToolbar" >
+		<Menu Name="Tools" Caption="" IconFile="" _guid="{90F2A29F-F15D-41DC-AA9C-BE32758DA488}" _version="" InsertBefore="View" >
+			<Menu Name="Animation" Caption="" IconFile="" _guid="{99959C4A-8D33-454C-BD37-4B9C33198D5C}" _version="1.0.0" InsertBefore="Half-Life" >
+				<MenuItem Name="ReverseKeyframes" Caption="Reverse Keyframe Order" Script="./Schema/Scripts/SystemScripts/ReverseKeyframes" _guid="{7E850DDE-B5BE-49A7-B4DF-48F4954089D1}" _version="1.0.0" InsertBefore="ScaleKeyframes" />
+				<MenuItem Name="ScaleKeyframes" Caption="Scale Keyframe Times" Script="./Schema/Scripts/SystemScripts/ScaleKeyframes" _guid="{0F2A91D0-7FB1-4CD4-8D54-AAD587E399EC}" _version="1.0.0" />
+			</Menu>
+		</Menu>
+	</Menu>
+</schema>

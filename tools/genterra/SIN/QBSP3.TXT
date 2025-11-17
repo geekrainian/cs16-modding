@@ -1,0 +1,73 @@
+qbsp3
+12 May 1999
+David Hyde (rascal@magnolia.net)
+
+This version of qbsp3 is based on the original source code supplied by id 
+Software, modified by Ritual Entertainment for SiN.
+
+Neither id Software nor Ritual Entertainment supports the changes made to this
+version of qbsp3.
+
+Detail hint brushes
+   This change was suggested by Alexander Malmberg as a method for controlling
+   brush fragmentation, while not producing a lot of unecessary portals. This
+   change allows GenSurf (in particular) to produce detailed terrain surfaces
+   that are very r_speeds efficient and compile VERY quickly.
+
+Bug fix to faces.c
+   Bug fix to faces.c discovered by Alexander Malmberg. This fix is described 
+   in detail at http://frag.com/quest/doc/qbsp3_bug1.html. If you have any 
+   questions concerning this change please address them to A. Malmberg at 
+   alexander@malmberg.org. This fix will potentially lower r_speeds in a map 
+   (though not much), prevent occasional visual errors, and possibly prevent
+   "WARNING: leaf portals saw into leaf" errors.
+
+"Bounds out of range" checks
+   Fixed an error in map.c that prevented qbsp3 from correctly reporting 
+   "bounds out of range" and/or "no visible sides on brush" errors for brushes 
+   outside the +/-4096 limits in the Y or Z directions. The original source 
+   code checked the X direction 3 times. This error was originally detected 
+   (as far as I know) by Steven Boswell, and reported in his excellent article 
+   at http://wdunltd.ml.org/whatis/Quake2/bspvis.html
+
+===============================
+Changes unrelated to Sin/SinED:
+===============================
+
+Floating point support
+   Reads floating point numbers from .map files as floats, rather than 
+   truncating to integers. All internal operations in qbsp3 have always used 
+   floats. This change allows users whose editors (e.g. Quark) produce maps 
+   with floating point values to use this version of qbsp3 without roundoff 
+   errors. This change will have not cause any problems for maps containing 
+   integer coordinates.
+
+Clip brush bug
+   Added a change to WriteBSP to compensate for a bug in Quake2. This change 
+   was developed by Alexander Malmberg. The short version: Q2 expects to find 
+   at least one empty leaf in a .BSP file, but incorrectly thinks a leaf with 
+   a clip brush in it isn't empty. If all of a maps leafs contain clip brushes, 
+   Q2 displays the error message "Map does not have an empty leaf" and shuts 
+   down. Note that this error generally only occurs in small test maps that 
+   are mostly empty (so that the only leafs generated are those produced by 
+   the default 1024 cuts). The change to WriteBSP adds a dummy empty leaf if 
+   one is not present.
+
+Lowercase texture names
+   Automatically converts all texture names to lower case. This will prevent 
+   the upper case animated texture crash that occurs for shareware WorldCraft 
+   users.
+
+==================================================================================
+Visual C/C++ 5.0 was used to compile the source code. No optimizations were used 
+(I'm paranoid).
+
+******************* DISCLAIMER ******************************
+*                                                           *
+* I (David Hyde) make no warranties regarding the computer  *
+* program QBSP3.EXE. Users assume responsibility for the    *
+* results achieved for computer program use and should      *
+* verify applicability and accuracy.                        *
+*                                                           *
+*************************************************************
+

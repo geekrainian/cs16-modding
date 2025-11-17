@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="ltr">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+
+<title>kHED :: Справка :: Немного теории</title>
+<style type="text/css">
+<!--
+/* General page style. The scroll bar colours only visible in IE5.5+ */
+body {
+	background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+}
+
+/* General font families for common tags */
+font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+a:link,a:active,a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+hr	{ height: 0px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+
+td.rowpic {
+		background-color: #FFFFFF;
+		background-image: url(forum/templates/subSilver/images/cellpic2.jpg);
+		background-repeat: repeat-y;
+}
+
+/* Header cells - the blue and silver gradient backgrounds */
+th	{
+	color: #FFA34F; font-size: 11px; font-weight : bold;
+	background-color: #006699; height: 25px;
+	background-image: url(forum/templates/subSilver/images/cellpic3.gif);
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
+			background-image: url(forum/templates/subSilver/images/cellpic1.gif);
+			background-color:#D1D7DC; border: #FFFFFF; border-style: solid; height: 28px;
+}
+
+td.cat,td.catHead,td.catBottom {
+	height: 29px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 28px;
+}
+td.row3Right,td.spaceRow {
+	background-color: #D1D7DC; border: #FFFFFF; border-style: solid;
+}
+
+th.thHead,td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+	font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none; line-height : 120%; color : #000000;
+}
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #000000; }
+a.gen,a.genmed,a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #000000 }
+a.mainmenu		{ text-decoration: none; color : #006699;  }
+a.mainmenu:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Forum category titles */
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink		{ font-weight: bold; font-size: 12px; color : #006699; }
+a.forumlink 	{ text-decoration: none; color : #006699; }
+a.forumlink:hover{ text-decoration: underline; color : #DD6900; }
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar when in a forum */
+.nav			{ font-weight: bold; font-size: 11px; color : #000000;}
+a.nav			{ text-decoration: none; color : #006699; }
+a.nav:hover		{ text-decoration: underline; }
+
+/* titles for the topics: could specify viewed link colour too */
+.topictitle,h1,h2	{ font-weight: bold; font-size: 11px; color : #000000; }
+a.topictitle:link   { text-decoration: none; color : #006699; }
+a.topictitle:visited { text-decoration: none; color : #5493B4; }
+a.topictitle:hover	{ text-decoration: underline; color : #DD6900; }
+
+/* Name of poster in viewmsg.php and viewtopic.php and other places */
+.name			{ font-size : 11px; color : #000000;}
+
+/* Location, number of posts, post date etc */
+.postdetails		{ font-size : 10px; color : #000000; }
+
+/* The content of the posts (body of text) */
+.postbody { font-size : 12px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : #006699 }
+a.postlink:visited { text-decoration: none; color : #5493B4; }
+a.postlink:hover { text-decoration: underline; color : #DD6900}
+
+/* Copyright and bottom info */
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: -1px;}
+a.copyright		{ color: #444444; text-decoration: none;}
+a.copyright:hover { color: #000000; text-decoration: underline;}
+
+-->
+</style>
+
+</head>
+<body bgcolor="#E5E5E5" text="#000000" link="#006699" vlink="#5493B4">
+
+<a name="top"></a>
+
+<table width="100%" cellspacing="0" cellpadding="10" border="0" align="center" ID="Table1">
+	<tr>
+		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0" ID="Table2">
+
+</td>
+</tr>
+</table><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br><br>
+<b style="font-size:16pt">Немного теории</b><br><br>
+<span class="genmed">
+&nbsp; <i>Этот раздел посвящен в первую очередь тем, кто не работал ранее в других редакторах трехмерного моделирования и не знаком с основными принципами и терминами трехмерной графики. Вы можете пропустить его, если уже имеете опыт работы с 3D-приложениями.</i>
+<br><br><br>&nbsp; Любая трехмерная модель объекта, изображение которого мы видим в компьютерных играх и других трехмерных приложениях, состоит из <b>треугольников</b>.
+<br><br><img src="../manual_img/box_triangles.jpg">
+<br>&nbsp; Каждый треугольник опирается на три точки - <b>вершины</b>. Следовательно, перемещая вершины, мы можем задать абсолютно любой треугольник. Разные треугольники могут иметь общие вершины.
+<br>&nbsp; Треугольник имеет лицевую и заднюю сторону. Положение лицевой и задней стороны зависит от порядка следования вершин. Обратить порядок их следования - значит повернуть треугольник лицом в обратную сторону.
+<br>&nbsp; Как правило, только лицевая сторона треугольника является видимой.
+<br>&nbsp; Треугольник также имеет значения <b>текстурных координат</b> для каждой из своих вершин. Текстурные координаты - это двумерные координаты пикселей <b>текстуры</b>.
+<br>&nbsp; Текстура представляет собой двумерное изображение, а текстурные координаты определяют как это изображение будет накладываться на трехмерные объекты. Совокупность текстурных координат называют <b>текстурной разверткой</b>.
+<br><br><br>&nbsp; На рисунке ниже показана текстурная развертка треугольника и сам треугольник с наложенной текстурой:
+<br><br><img src="../manual_img/uv_example1.jpg"><br><br>
+<br>&nbsp; А вот что произойдет если изменить текстурные координаты одной из вершин:
+<br><br><img src="../manual_img/uv_example2.jpg"><br><br>
+<br>&nbsp; Треугольник также имеет значения <b>нормалей</b> для всех его вершин. Нормали используются при рассчете освещения модели. Таким образом, если соседние треугольники будут иметь одинаковые нормали на общих вершинах, то место стыка треугольников будет менее заметно:
+<br><br><img src="../manual_img/sg_example.jpg"><br><br>
+<br>&nbsp; Нормали в kHED рассчитываются автоматически, с помощью <b>групп сглаживания</b>. Если соседние треугольники привязаны к одной группе сглаживания, их номали будут общими и ребро между ними будет невидимым. В противном случае для каждого треугольника нормали будут заданы отдельно и ребро станет видимым.
+<br><br><br><br><br><br><br><br><br><span class="genmed"><a href="index.htm">Назад к оглавлению</a></span><br>
+</span><br>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

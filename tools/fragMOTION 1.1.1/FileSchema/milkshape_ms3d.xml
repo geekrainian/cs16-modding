@@ -1,0 +1,23 @@
+<schema name="Milkshape3d" guid="{56C6E9C3-289E-4D09-ACA0-5701511C46D0}" version="1.0.1" >
+	<ClassFolder Name="Classes" Expand="True" InsertAfter="Extensions" >
+		<Class Name="Character" Desc="" CreateFlags="Merge|Render" IconFile="" Expand="True" InsertAfter="Root" >
+			<Property Name="JointSize" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="3" PropFlags="" MinValue="" MaxValue="" />
+			<Property Name="AlphaRef" Desc="" DataType="datatype:Float" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" />
+			<Property Name="TransparencyMode" Desc="" DataType="datatype:Long" EnumValues="" DefaultValue="0" PropFlags="" MinValue="" MaxValue="" />
+		</Class>
+		<Class Name="Bone" Desc="" CreateFlags="Copy|Delete|Rename|Merge|Render|Expanded" IconFile="" Expand="True" InsertAfter="Skeleton" >
+			<Property Name="Comment" Desc="Stores comments about a particular object" DataType="datatype:MultiLineText" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" />
+			<Property Name="JointColor" Desc="" DataType="datatype:Color" EnumValues="" DefaultValue="0xFF0000FF" PropFlags="" MinValue="" MaxValue="" />
+			<Property Name="JointIndex" Desc="" DataType="datatype:Long" EnumValues="" DefaultValue="-1" PropFlags="" MinValue="" MaxValue="" />
+		</Class>
+		<Class Name="Model" Desc="" CreateFlags="Copy|Delete|Rename|Merge" IconFile="" Expand="True" InsertAfter="Mesh" >
+			<Property Name="Comment" Desc="Stores comments about a particular object" DataType="datatype:MultiLineText" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" />
+		</Class>
+		<Class Name="Group" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Model" >
+			<Property Name="Comment" Desc="Stores comments about a particular object" DataType="datatype:MultiLineText" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" />
+		</Class>
+		<Class Name="Material" Desc="" CreateFlags="Copy|Delete|Rename" IconFile="" Expand="True" InsertAfter="Texture" >
+			<Property Name="Comment" Desc="Stores comments about a particular object" DataType="datatype:MultiLineText" EnumValues="" DefaultValue="" PropFlags="" MinValue="" MaxValue="" />
+		</Class>
+	</ClassFolder>
+</schema>

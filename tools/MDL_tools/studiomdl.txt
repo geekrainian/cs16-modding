@@ -1,0 +1,6 @@
+1. support very large models (up to 16 megs)
+2. support 9x blending on very large models
+3. support cmd $texrendermode
+4. support textures up to 1024x1024
+5. support up to 768 frames per sequence (was 512)
+6. support new arg for $texrendermode - "fullbright" (works only under Xash3D)
